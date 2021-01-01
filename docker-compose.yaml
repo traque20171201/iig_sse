@@ -1,4 +1,7 @@
 version: "3"
+networks:
+  iig:
+    external: true
 volumes:
   bundle:
   postgres:
@@ -28,3 +31,6 @@ services:
       - 3000:3000
     depends_on:
       - db
+    networks:
+      - iig
+      - default

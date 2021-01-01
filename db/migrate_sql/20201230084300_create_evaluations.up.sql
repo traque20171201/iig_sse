@@ -9,6 +9,8 @@ CREATE TABLE evaluations (
 
   status int4 DEFAULT 0 NOT NULL, -- 0: Nhân viên chưa đánh giá, 1: Nhân viên đang đánh giá, 2: Nhân viên hoàn thành đánh giá, 3: Quản lý trực tiếp đang đánh giá, 4: Quản lý trực tiếp hoàn thành đánh giá, 5: Quản lý thẩm định đang đánh giá, 6: Hoàn thành đánh giá
 
+  year int4 NOT NULL,
+
   achievements varchar NULL,
 
   positive_goals varchar NULL,
