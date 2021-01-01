@@ -1,0 +1,16 @@
+INSERT INTO master_evaluation_points(id,"name","order",factor,is_manager,created_at,updated_at) VALUES
+(1,'KHỐI LƯỢNG CÔNG VIỆC',1,0.15,false,now(),now()),
+(2,'CHẤT LƯỢNG CÔNG VIỆC',2,0.20,false,now(),now()),
+(3,'TIẾN ĐỘ THỰC HIỆN CÔNG VIỆC',3,0.20,false,now(),now()),
+(4,'KIẾN THỨC CHUYÊN MÔN VÀ KỸ NĂNG NGHỀ NGHIỆP',4,0.15,false,now(),now()),
+(5,'MỨC ĐỘ TIN CẬY VÀ TRÁCH NHIỆM',5,0.5,false,now(),now()),
+(6,'NHIỆT TÌNH, SÁNG KIẾN, SÁNG TẠO',6,0.5,false,now(),now()),
+(7,'TINH THẦN, THÁI ĐỘ LÀM VIỆC',7,0.5,false,now(),now()),
+(8,'KỸ NĂNG GIAO TIẾP - HỖ TRỢ HỢP TÁC',8,0.5,false,now(),now()),
+(9,'TIẾT KIỆM - GIỮ GÌN TÀI SẢN VÀ VỆ SINH CHUNG',9,0.5,false,now(),now()),
+(10,'CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY',10,0.5,false,now(),now()),
+(11,'KỸ NĂNG LẬP KẾ HOẠCH',1,0.25,true,now(),now()),
+(12,'KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC',2,0.25,true,now(),now()),
+(13,'KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH',3,0.20,true,now(),now()),
+(14,'KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN',4,0.15,true,now(),now()),
+(15,'KỸ NĂNG KIỂM SOÁT RỦI RO',5,0.15,true,now(),now())
