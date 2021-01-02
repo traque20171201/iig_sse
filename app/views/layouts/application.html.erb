@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IigSse</title>
+    <title><%= t('title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,35 @@
   </head>
 
   <body>
-    <%= yield %>
+    <!-- Header -->
+    <div class="header">
+      <div class="container">
+        <%= render "shared/header" %>
+      </div>
+    </div>
+    <!-- Menu -->
+    <div class="menu">
+      <div class="container">
+        <%= render "shared/menu" %>
+      </div>
+    </div>
+    <!-- Main -->
+    <div class="main">
+      <div class="container">
+        <% if !notice.nil? %>
+          <p class="notice alert alert-info"><%= notice %></p>
+        <% end %>
+        <% if !alert.nil? %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      <div class="container">
+        <p>© 2021 iigvietnam.com, Inc. All rights reserved.</p>
+      </div>
+    </div>
   </body>
 </html>

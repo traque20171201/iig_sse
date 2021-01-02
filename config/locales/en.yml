@@ -30,5 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  signup: "Signup"
+  title: "Staffing System Evaluation"
+  website: "iigvietnam.com"
+  welcome: "Staffing System Evaluation. Please log in to access the Evaluation Portal."
+  signin: "Sign In"
