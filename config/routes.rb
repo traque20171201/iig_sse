@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     devise_for :employees, controllers: {
       sessions: 'employees/sessions',
     }
+    devise_scope :employee do
+      get "employees/show", to: 'employees/registrations#show'
+    end
   end
 end

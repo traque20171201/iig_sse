@@ -5,7 +5,7 @@ build:
 
 up:
 	rm -rf tmp/pids/server.pid
-	docker-compose up -d
+	docker-compose up
 
 down:
 	docker-compose down

@@ -5,7 +5,7 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <p>
-        <%= f.text_field :employee_number, autofocus: true, autocomplete: "login", class: 'form-control', placeholder: t('account'), required: true %>
+        <%= f.text_field :employee_number, autofocus: true, autocomplete: "employee_number", class: 'form-control', placeholder: t('employee_number'), required: true %>
       </p>
 
       <p>

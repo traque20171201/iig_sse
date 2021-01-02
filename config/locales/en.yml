@@ -34,3 +34,17 @@ en:
   website: "iigvietnam.com"
   welcome: "Staffing System Evaluation. Please log in to access the Evaluation Portal."
   signin: "Sign In"
+  signout: "Sign Out"
+  employee_number: "Employee Number"
+  password: "Password"
+  login:
+    submit: "Login"
+  home: "Home"
+  profile: "Profile"
+  change_password: "Change Password"
+  employee: "Employee"
+  manager: "Manager"
+  admin: "Admin"
+  error:
+    sign_in: "Bạn cần phải đăng nhập"
+    permission: "Bạn không có quyền truy cập"

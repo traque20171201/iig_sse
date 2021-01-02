@@ -34,3 +34,17 @@ vi:
   website: "iigvietnam.com"
   welcome: "Hệ thống đánh giá năng lực nhân sự. Hãy đăng nhập để thực hiện đánh giá."
   signin: "Đăng nhập"
+  signout: "Đăng xuất"
+  employee_number: "Mã số nhân viên"
+  password: "Mật khẩu"
+  login:
+    submit: "Đăng nhập"
+  home: "Trang chủ"
+  profile: "Tài khoản"
+  change_password: "Thay đổi mật khẩu"
+  employee: "Nhân viên"
+  manager: "Quản lý"
+  admin: "Quản trị viên"
+  error:
+    sign_in: "You need to sign in"
+    permission: "You don't permission to access"
