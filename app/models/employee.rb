@@ -9,6 +9,16 @@ class Employee < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable
 
+  validates :password, :presence => true,
+                       :length => {:within => 8..40},
+                       :format => {:with => PASSWORD_FORMAT},
+                       :on => :create
+  validates :password, :presence => true,
+                       :length => {:within => 8..40},
+                       :format => {:with => PASSWORD_FORMAT},
+                       :allow_blank => true,
+                       :on => :update
+
   def self.human_enum_name(enum_name, enum_value)
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{enum_name.to_s.pluralize}.#{enum_value}")
   end

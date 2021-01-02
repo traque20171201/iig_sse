@@ -16,7 +16,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
               <%= link_to  t('profile'), employees_show_path, class: 'dropdown-item' %>
-              <%= link_to  t('change_password'), root_path, class: 'dropdown-item' %>              
+              <%= link_to  t('change_password'), edit_employee_registration_path, class: 'dropdown-item' %>              
               <div class="dropdown-divider"></div>
               <%= link_to t('signout'), destroy_employee_session_path, method: :delete, class: 'dropdown-item' %>
             </div>

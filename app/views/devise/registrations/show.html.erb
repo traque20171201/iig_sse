@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6 bg-light">
-    <h2><%= t('accountInfo') %></h2>
+    <h2><%= t('employee_info') %></h2>
 
     <div class="field form-group row">
-      <div class="col-md-3 col-form-label font-weight-bold"><%= t('username') %></div>
+      <div class="col-md-3 col-form-label font-weight-bold"><%= t('employee_number') %></div>
       <div class="col-md-9 col-form-label"><%= @employee.employee_number %></div>
     </div>
     <div class="field form-group row">
-      <div class="col-md-3 col-form-label font-weight-bold"><%= t('fullname') %></div>
+      <div class="col-md-3 col-form-label font-weight-bold"><%= t('name') %></div>
       <div class="col-md-9 col-form-label"><%= @employee.name %></div>
     </div>
     <div class="field form-group row">
@@ -24,23 +24,23 @@
       <div class="col-md-9 col-form-label"><%= @employee.birth_date %></div>
     </div>
     <div class="field form-group row">
-      <div class="col-md-3 col-form-label font-weight-bold"><%= t('birthday') %></div>
+      <div class="col-md-3 col-form-label font-weight-bold"><%= t('registration_date') %></div>
       <div class="col-md-9 col-form-label"><%= @employee.registration_date %></div>
     </div>
     <div class="field form-group row">
       <div class="col-md-3 col-form-label font-weight-bold"><%= t('position') %></div>
-      <div class="col-md-9 col-form-label"><%= @employee.birth_date %></div>
+      <div class="col-md-9 col-form-label"><%= @employee.position %></div>
     </div>
     <div class="field form-group row">
       <div class="col-md-3 col-form-label font-weight-bold"><%= t('branch') %></div>
-      <div class="col-md-9 col-form-label"><%= @employee.birth_date %></div>
+      <div class="col-md-9 col-form-label"><%= @employee.branch %></div>
     </div>    
     <div class="field form-group row">
       <div class="col-md-3 col-form-label font-weight-bold"><%= t('role') %></div>
       <div class="col-md-9 col-form-label"><%= Employee.human_enum_name(:role, @employee.role) %></div>
     </div>
     <div class="field form-group row">
-      <div class="col-md-3 col-form-label font-weight-bold"><%= t('branch') %></div>
+      <div class="col-md-3 col-form-label font-weight-bold"><%= t('department') %></div>
       <div class="col-md-9 col-form-label"><%= @employee.department_id %></div>
     </div>   
   </div>
