@@ -1,0 +1,150 @@
+<h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (Từ Trưởng nhóm trở xuống)</h3>
+<div class="accordion" id="accordionEvaluations">
+  <div class="card">
+    <div class="card-header" id="headingA">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+          A. THÔNG TIN CHUNG CỦA NGƯỜI THAM GIA ĐÁNH GIÁ
+        </button>
+      </h2>
+    </div>
+    <div id="collapseA" class="collapse multi-collapse show" aria-labelledby="headingA" data-parent="#accordionEvaluations">
+      <div class="card-body">
+        <div class ="row">
+          <div class="col-md-2">
+            <span class="font-weight-bold">CBNV tự đánh giá:</span>
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold">Họ tên:</span>
+            <span><%= @evaluation.employee_id %></span>
+          </div>
+          <div class="col-md-3">
+            <span class="font-weight-bold">Chức danh:</span>
+            <span>Chuyên viên Quản lý đào tạo</span>
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold">Mã NV:</span>
+            <span>HCM0053</span>
+          </div>
+          <div class="col-md-3">
+            <span class="font-weight-bold">Ngày vào CTy:</span>
+            <span>2020-07-28</span>
+          </div>
+        </div>
+        <div class ="row">
+          <div class="col-md-2">
+            <span class="font-weight-bold">CBQL trực tiếp đánh giá:</span>
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold">Họ tên:</span>
+            <span>Nguyễn Văn A</span>
+          </div>
+          <div class="col-md-3">
+            <span class="font-weight-bold">Chức danh:</span>
+            <span>Chuyên viên Quản lý đào tạo</span>
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold">Mã NV:</span>
+            <span>HCM0053</span>
+          </div>
+          <div class="col-md-3">
+            <span class="font-weight-bold">Ngày vào CTy:</span>
+            <span>2020-07-28</span>
+          </div>
+        </div>
+        <div class ="row">
+          <div class="col-md-2">
+            <span class="font-weight-bold">CBQL thẩm định 2:</span>
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold">Họ tên:</span>
+            <span>Nguyễn Văn A</span>
+          </div>
+          <div class="col-md-3">
+            <span class="font-weight-bold">Chức danh:</span>
+            <span>Chuyên viên Quản lý đào tạo</span>
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold">Mã NV:</span>
+            <span>HCM0053</span>
+          </div>
+          <div class="col-md-3">
+            <span class="font-weight-bold">Ngày vào CTy:</span>
+            <span>2020-07-28</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingB">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseB" aria-expanded="false" aria-controls="collapseB">
+          B. PHẦN DÀNH CHO MỌI CBNV
+        </button>
+      </h2>
+    </div>
+    <div id="collapseB" class="collapse multi-collapse" aria-labelledby="headingB" data-parent="#accordionEvaluations">
+      <div class="card-body">
+        <div class="row header-pink font-weight-bold">
+          <div class="col-md-1 border-right">STT</div>
+          <div class="col-md-2 border-right">Tiêu chí</div>
+          <div class="col-md-1 border-right">Trọng số</div>
+          <div class="col-md-1 border-right">Tự đánh giá</div>
+          <div class="col-md-2 border-right">Diễn giải cụ thể</div>
+          <div class="col-md-1 border-right">CBQL đánh giá</div>
+          <div class="col-md-2 border-right">Diễn giải cụ thể</div>
+          <div class="col-md-2">CBQL Thẩm định 2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingC">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseC" aria-expanded="false" aria-controls="collapseC">
+          C. ĐỊNH HƯỚNG / ĐỀ XUẤT / KIẾN NGHỊ / ĐÓNG GÓP Ý KIẾN
+        </button>
+      </h2>
+    </div>
+    <div id="collapseC" class="collapse multi-collapse" aria-labelledby="headingC" data-parent="#accordionEvaluations">
+      <div class="card-body">
+        <div class="row">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingD">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseD" aria-expanded="false" aria-controls="collapseD">
+          D. Ý KIẾN ĐÁNH GIÁ
+        </button>
+      </h2>
+    </div>
+    <div id="collapseD" class="collapse multi-collapse" aria-labelledby="headingD" data-parent="#accordionEvaluations">
+      <div class="card-body">
+        <div class="row">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingE">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseE" aria-expanded="false" aria-controls="collapseE">
+          E. KẾT QUẢ XẾP LOẠI NĂM (Phần dành cho Phòng Nhân sự)
+        </button>
+      </h2>
+    </div>
+    <div id="collapseE" class="collapse multi-collapse" aria-labelledby="headingE" data-parent="#accordionEvaluations">
+      <div class="card-body">
+        <div class="row">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-lg btn-secondary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="collapseA collapseB collapseC collapseD collapseE" style="margin-top:5px;">
+    Hiển thị toàn bộ thông tin
+  </button>
+</div>

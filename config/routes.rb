@@ -5,13 +5,18 @@ Rails.application.routes.draw do
 
     devise_for :employees, controllers: {
       sessions: 'employees/sessions',
-      registrations: 'employees/registrations',
-      passwords: 'employees/passwords',
     }
     devise_scope :employee do
       get "employees/show", to: 'employees/registrations#show'
     end
 
-    resources :evaluations
+    # resources :employee_evaluations
+    # resources :manager_evaluations
+    # resources :appraiser_evaluations
+    get 'employee/evaluations/edit', to: 'employee_evaluations#edit'
+    post 'employee/evaluations', to: 'employee_evaluations#save'
+    get 'employee/evaluations', to: 'employee_evaluations#show'
+    get 'manager/evaluations', to: 'manager_evaluations#show'
+    get 'appraiser/evaluations', to: 'appraiser_evaluations#show'
   end
 end

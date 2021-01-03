@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .container {
+	min-width: 1280px;
+ }
  .header {
 	background-color: #007db8;
 	border-bottom: 1px solid #7ebeda;
@@ -36,4 +39,15 @@
 	border-top: 1px solid #ddd;
 	padding-top: 15px;
 	padding-left: 0px;
+}
+.header-pink {
+	background-color: #FFC0CB;
+	border: 1px solid #007db8;
+	text-align: center;
+}
+.border-right {
+	border-right: 1px solid #007db8;
+}
+.font-weight-bold {
+	font-weight: bold;
 }

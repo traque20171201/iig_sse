@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Employee < ApplicationRecord
+  belongs_to :department
+  has_many :evaluations
+
   PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x
 
   enum role: {employee: 0, manager: 1, admin: 9}

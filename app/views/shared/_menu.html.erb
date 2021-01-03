@@ -5,6 +5,32 @@
         <%= link_to  t('home'), root_path, class: 'nav-link' %>
       </li>
       <% if current_employee %>
+        <li class="nav-item dropdown <%= 'active' if controller_name=='employee_evaluations' %>">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('employee') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+            <%= link_to  t('evaluation'), employee_evaluations_edit_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to  t('result'), employee_evaluations_path, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown <%= 'active' if controller_name=='manager_evaluations' %>">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('manager') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+            <%= link_to  t('list_evaluations'), manager_evaluations_path, class: 'dropdown-item' %>
+          </div>
+        </li>
+        <li class="nav-item dropdown <%= 'active' if controller_name=='appraiser_evaluations' %>">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('appraiser') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+            <%= link_to  t('list_evaluations'), appraiser_evaluations_path, class: 'dropdown-item' %>
+          </div>
+        </li>
       <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -16,7 +42,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownUser">
               <%= link_to  t('profile'), employees_show_path, class: 'dropdown-item' %>
-              <%= link_to  t('change_password'), edit_employee_registration_path, class: 'dropdown-item' %>              
+              <%= link_to  t('change_password'), root_path, class: 'dropdown-item' %>              
               <div class="dropdown-divider"></div>
               <%= link_to t('signout'), destroy_employee_session_path, method: :delete, class: 'dropdown-item' %>
             </div>
