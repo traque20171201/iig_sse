@@ -13,5 +13,6 @@ WORKDIR /usr/src/app
 COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle install
+RUN bundle exec rails webpacker:install
 COPY . /usr/src/app
 RUN chmod 777 /usr/src/app/scripts/db_migrate
