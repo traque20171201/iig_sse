@@ -7,8 +7,6 @@ class EmployeeEvaluationsController < ApplicationController
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
     @result = service.result
-    @evaluation = Evaluation.new
-    @evaluation_details = @result[:evaluation].evaluation_details
   end
 
   def draff

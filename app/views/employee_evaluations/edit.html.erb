@@ -112,11 +112,21 @@
               <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.evaluation_point_id %></div>
               <div class="col-md-3 border-right padding-top"><%= evaluation_detail.master_evaluation_point.name %></div>
               <div class="col-md-1 text-center border-right padding-top"><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></div>
-              <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
-              <div class="col-md-2 border-right padding-top"><%= evaluation_detail.employee_comment %></div>
-              <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
-              <div class="col-md-2 border-right padding-top"><%= evaluation_detail.manager_comment %></div>
-              <div class="col-md-1 text-center padding-top"><%= evaluation_detail.appraiser_point %></div>
+              <div class="col-md-1 text-center border-right padding-top">
+                <input type="number" name="evaluation[evaluation_details][employee_point]" value="<%= evaluation_detail.employee_point %>" step="1.0" min="1.0" max="5.0" />
+              </div>
+              <div class="col-md-2 border-right padding-top">
+                <input type="text" name="evaluation[evaluation_details][employee_comment]" value="<%= evaluation_detail.employee_comment %>" />
+              </div>
+              <div class="col-md-1 text-center border-right padding-top">
+                <input type="number" name="evaluation[evaluation_details][manager_point]" value="<%= evaluation_detail.manager_point %>" step="1.0" min="1.0" max="5.0" />
+              </div>
+              <div class="col-md-2 border-right padding-top">
+                <input type="text" name="evaluation[evaluation_details][manager_comment]" value="<%= evaluation_detail.manager_comment %>" />
+              </div>
+              <div class="col-md-1 text-center padding-top">
+                <input type="number" name="evaluation[evaluation_details][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" />
+              </div>
             </div>
           <% end %>
           <div class="row">
@@ -199,7 +209,7 @@
             <div class="col-md-12">
               <span class="highlight">Ngày thực hiện trao đổi 1:1 giữa người được đánh giá và CBQL trực tiếp đánh giá. </span>
               <span class="font-weight-bold">Ngày: </span>
-              <span><%= @result[:evaluation].one_one_date %></span>
+              <input type="date" name="evaluation[one_one_date]" value="<%= @result[:evaluation].one_one_date %>" />
             </div>
           </div>
           <div class="row">
@@ -207,13 +217,11 @@
               <span class="font-weight-bold">Ý kiến của người được đánh giá về kết quả đánh giá của CBQL trực tiếp đánh giá</span>
               <span>(sau trao đổi 1:1 - ghi nhận ý kiến thực)</span>
             </div>
-            <div class="col-md-2 text-right">
-              <span class="font-weight-bold">ĐỒNG Ý:</span>
-              <span class="highlight"><%= @result[:evaluation].get_is_agree %></span>
-            </div>
-            <div class="col-md-2 text-right">
-              <span class="font-weight-bold">KHÔNG ĐỒNG Ý:</span>
-              <span class="highlight"><%= @result[:evaluation].get_not_agree %></span>
+            <div class="col-md-4 text-right">
+              <input type="radio" id="is_agree" name="evaluation[is_agree]" value="true" />
+              <label for="is_agree" class="font-weight-bold">ĐỒNG Ý</label>
+              <input type="radio" id="is_not_agree" name="evaluation[is_agree]" value="false" />
+              <label for="is_not_agree" class="font-weight-bold">KHÔNG ĐỒNG Ý</label>
             </div>
           </div>
           <div class="row height-80">
