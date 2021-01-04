@@ -40,14 +40,40 @@
 	padding-top: 15px;
 	padding-left: 0px;
 }
-.header-pink {
+.header-background {
 	background-color: #FFC0CB;
+}
+.border {
 	border: 1px solid #007db8;
-	text-align: center;
+}
+.border-left {
+	border-left: 1px solid #007db8;
+}
+.border-top {
+	border-top: 1px solid #007db8;
 }
 .border-right {
 	border-right: 1px solid #007db8;
 }
+.border-bottom {
+	border-bottom: 1px solid #007db8;
+}
 .font-weight-bold {
 	font-weight: bold;
+}
+.text-center {
+	text-align: center;
+}
+.padding-top {
+	padding: 10px;
+}
+.highlight {
+	color: #ff0000;
+	font-weight: bold;
+}
+.height-80 {
+	height: 80px;
+}
+.gray-background {
+	background-color: #808080;
 }

@@ -6,7 +6,7 @@ class EmployeeEvaluationsController < ApplicationController
     request_params.validate!
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    @evaluation = service.result
+    @result = service.result
   end
 
   def save

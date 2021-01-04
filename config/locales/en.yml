@@ -59,11 +59,8 @@ en:
   evaluation: "Evaluation"
   result: "Result"
   list_evaluations: "List Evaluations"
-  item_a: "A. THÔNG TIN CHUNG CỦA NGƯỜI THAM GIA ĐÁNH GIÁ"
-  item_b: "B. PHẦN DÀNH CHO MỌI CBNV"
-  item_c: "C. ĐỊNH HƯỚNG / ĐỀ XUẤT / KIẾN NGHỊ / ĐÓNG GÓP Ý KIẾN"
-  item_d: "D. Ý KIẾN ĐÁNH GIÁ"
-  item_e: "E. KẾT QUẢ XẾP LOẠI NĂM (Phần dành cho Phòng Nhân sự)"
+  draff: "Draff"
+  save: "Save"
   error:
     sign_in: "Bạn cần phải đăng nhập"
     permission: "Bạn không có quyền truy cập"

@@ -59,11 +59,8 @@ vi:
   evaluation: "Đánh giá"
   result: "Kết quả"
   list_evaluations: "Danh sách đánh giá"
-  item_a: "A. THÔNG TIN CHUNG CỦA NGƯỜI THAM GIA ĐÁNH GIÁ"
-  item_b: "B. PHẦN DÀNH CHO MỌI CBNV"
-  item_c: "C. ĐỊNH HƯỚNG / ĐỀ XUẤT / KIẾN NGHỊ / ĐÓNG GÓP Ý KIẾN"
-  item_d: "D. Ý KIẾN ĐÁNH GIÁ"
-  item_e: "E. KẾT QUẢ XẾP LOẠI NĂM (Phần dành cho Phòng Nhân sự)"
+  draff: "Lưu tạm"
+  save: "Hoàn thành"
   error:
     sign_in: "You need to sign in"
     permission: "You don't permission to access"
