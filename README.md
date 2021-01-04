@@ -39,9 +39,8 @@ make seed-fu (sudo make seed-fu)
 Step 5: Test
 Truy cập link: localhost:3000 để xác nhận hệ thống được setup thành công
 
------------
 Step 6: Fix error webpacker nếu khi test bị lỗi
 Run lệnh
 make fix-webpacker (sudo make fix-webpacker)
------------
+
 HẾT.
