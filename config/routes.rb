@@ -10,11 +10,12 @@ Rails.application.routes.draw do
       get "employees/show", to: 'employees/registrations#show'
     end
 
-    # resources :employee_evaluations
-    # resources :manager_evaluations
+    # resources :evaluations
+    # resources :evaluation_details
     # resources :appraiser_evaluations
     get 'employee/evaluations/edit', to: 'employee_evaluations#edit'
     post 'employee/evaluations', to: 'employee_evaluations#save'
+    post 'employee/evaluations/draff', to: 'employee_evaluations#draff'
     get 'employee/evaluations', to: 'employee_evaluations#show'
     get 'manager/evaluations', to: 'manager_evaluations#show'
     get 'appraiser/evaluations', to: 'appraiser_evaluations#show'

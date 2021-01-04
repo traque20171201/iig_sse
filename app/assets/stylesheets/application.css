@@ -67,6 +67,9 @@
 .padding-top {
 	padding: 10px;
 }
+.margin-top {
+	margin-top: 10px;
+}
 .highlight {
 	color: #ff0000;
 	font-weight: bold;
@@ -76,4 +79,7 @@
 }
 .gray-background {
 	background-color: #808080;
+}
+.lemon-background {
+	background-color: #ffc000;
 }
