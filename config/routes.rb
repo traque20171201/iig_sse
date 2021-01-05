@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     get 'employee/evaluations/edit', to: 'employee_evaluations#edit'
     post 'employee/evaluations', to: 'employee_evaluations#save'
     get 'employee/evaluations', to: 'employee_evaluations#show'
+    get 'manager/evaluations/list', to: 'manager_evaluations#list'
+    get 'manager/evaluations/edit', to: 'manager_evaluations#edit'
+    post 'manager/evaluations', to: 'manager_evaluations#save'
     get 'manager/evaluations', to: 'manager_evaluations#show'
     get 'appraiser/evaluations', to: 'appraiser_evaluations#show'
+    get 'guide', to: 'guide#index'
   end
 end

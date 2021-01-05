@@ -41,6 +41,7 @@ en:
     submit: "Login"
     success: "You are Logged In, %{username}"
   home: "Home"
+  guide: "Guide"
   profile: "Profile"
   change_password: "Change Password"
   employee: "Employee"

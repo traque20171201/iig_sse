@@ -1,1 +1,407 @@
-<h3>Manager Evaluations</h3>
+<% if @result[:employee].manager? %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CÁN BỘ QUẢN LÝ (từ Phó phòng trở lên)</h3>
+<% else %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (từ Trưởng nhóm trở xuống)</h3>
+<% end %>
+<% if @result[:evaluation].present? %>
+  <div class="row" style="margin-top:5px; margin-bottom:5px;">
+    <div class="col-md-6">
+      <span class="font-weight-bold">Trạng thái:</span>
+      <span><%= @result[:evaluation].status %></span>
+    </div>
+    <div class="col-md-6 text-right">
+    </div>
+  </div>
+  <div class="accordion" id="accordionEvaluations">
+    <div class="card">
+      <div class="card-header" id="headingA">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+            A. THÔNG TIN CHUNG CỦA NGƯỜI THAM GIA ĐÁNH GIÁ
+          </button>
+        </h2>
+      </div>
+      <div id="collapseA" class="collapse multi-collapse show" aria-labelledby="headingA" data-parent="#accordionEvaluations">
+        <div class="card-body">
+          <div class ="row">
+            <div class="col-md-2">
+              <span class="font-weight-bold">CBNV tự đánh giá:</span>
+            </div>
+            <div class="col-md-2">
+              <span class="font-weight-bold">Họ tên:</span>
+              <span><%= @result[:employee].name %></span>
+            </div>
+            <div class="col-md-3">
+              <span class="font-weight-bold">Chức danh:</span>
+              <span><%= @result[:employee].position %></span>
+            </div>
+            <div class="col-md-2">
+              <span class="font-weight-bold">Mã NV:</span>
+              <span><%= @result[:employee].employee_number %></span>
+            </div>
+            <div class="col-md-3">
+              <span class="font-weight-bold">Ngày vào CTy:</span>
+              <span><%= @result[:employee].registration_date %></span>
+            </div>
+          </div>
+          <div class ="row">
+            <div class="col-md-2">
+              <span class="font-weight-bold">CBQL trực tiếp đánh giá:</span>
+            </div>
+            <div class="col-md-2">
+              <span class="font-weight-bold">Họ tên:</span>
+              <span><%= @result[:manager]&.name %></span>
+            </div>
+            <div class="col-md-3">
+              <span class="font-weight-bold">Chức danh:</span>
+              <span><%= @result[:manager]&.position %></span>
+            </div>
+            <div class="col-md-2">
+              <span class="font-weight-bold">Mã NV:</span>
+              <span><%= @result[:manager]&.employee_number %></span>
+            </div>
+            <div class="col-md-3">
+              <span class="font-weight-bold">Ngày vào CTy:</span>
+              <span><%= @result[:manager]&.registration_date %></span>
+            </div>
+          </div>
+          <div class ="row">
+            <div class="col-md-2">
+              <span class="font-weight-bold">CBQL thẩm định 2:</span>
+            </div>
+            <div class="col-md-2">
+              <span class="font-weight-bold">Họ tên:</span>
+              <span><%= @result[:appraiser]&.name %></span>
+            </div>
+            <div class="col-md-3">
+              <span class="font-weight-bold">Chức danh:</span>
+              <span><%= @result[:appraiser]&.position %></span>
+            </div>
+            <div class="col-md-2">
+              <span class="font-weight-bold">Mã NV:</span>
+              <span><%= @result[:appraiser]&.employee_number %></span>
+            </div>
+            <div class="col-md-3">
+              <span class="font-weight-bold">Ngày vào CTy:</span>
+              <span><%= @result[:appraiser]&.registration_date %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingB">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseB" aria-expanded="false" aria-controls="collapseB">
+            B. PHẦN DÀNH CHO MỌI CBNV
+          </button>
+        </h2>
+      </div>
+      <div id="collapseB" class="collapse multi-collapse" aria-labelledby="headingB" data-parent="#accordionEvaluations">
+        <div class="card-body">
+          <div class="row header-background font-weight-bold text-center border">
+            <div class="col-md-1 border-right">STT</div>
+            <div class="col-md-3 border-right">Tiêu chí</div>
+            <div class="col-md-1 border-right">Trọng số</div>
+            <div class="col-md-1 border-right">Tự đánh giá</div>
+            <div class="col-md-2 border-right">Diễn giải cụ thể</div>
+            <div class="col-md-1 border-right">CBQL đánh giá</div>
+            <div class="col-md-2 border-right">Diễn giải cụ thể</div>
+            <div class="col-md-1">CBQL Thẩm định 2</div>
+          </div>
+          <%@result[:evaluation].evaluation_details.each do |evaluation_detail| %>
+            <div class="row border-left border-right border-bottom">
+              <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.evaluation_point_id %></div>
+              <div class="col-md-3 border-right padding-top"><%= evaluation_detail.master_evaluation_point.name %></div>
+              <div class="col-md-1 text-center border-right padding-top"><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></div>
+              <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
+              <div class="col-md-2 border-right padding-top"><%= evaluation_detail.employee_comment %></div>
+              <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
+              <div class="col-md-2 border-right padding-top"><%= evaluation_detail.manager_comment %></div>
+              <div class="col-md-1 text-center padding-top"><%= evaluation_detail.appraiser_point %></div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
+            <div class="col-md-1 text-center padding-top"><span class="highlight">100%</span></div>
+            <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].employee_point %></span></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].manager_point %></span></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingC">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseC" aria-expanded="false" aria-controls="collapseC">
+            C. ĐỊNH HƯỚNG / ĐỀ XUẤT / KIẾN NGHỊ / ĐÓNG GÓP Ý KIẾN
+          </button>
+        </h2>
+      </div>
+      <div id="collapseC" class="collapse multi-collapse" aria-labelledby="headingC" data-parent="#accordionEvaluations">
+        <div class="card-body">
+          <div class="row border-bottom">
+            <div class="col-md-12">
+              <span class="font-weight-bold">1. Định hướng phát triển trong thời gian tới (Là mục tiêu phát triển cần hoàn thành hay phấn đấu trong thời gian tới )</span>
+            </div>
+          </div>
+          <div class="row height-80">
+            <div class="col-md-12">
+              <span><%= @result[:evaluation].achievements %></span>
+            </div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-md-12">
+              <span class="font-weight-bold">2. Điểm tích cực cần phát huy</span>
+            </div>
+          </div>
+          <div class="row height-80">
+            <div class="col-md-12">
+              <span><%= @result[:evaluation].positive_goals %></span>
+            </div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-md-12">
+              <span class="font-weight-bold">3. Điểm hạn chế cần sửa đổi</span>
+            </div>
+          </div>
+          <div class="row height-80">
+            <div class="col-md-12">
+              <span><%= @result[:evaluation].negative_goals %></span>
+            </div>
+          </div>
+          <div class="row border-bottom">
+            <div class="col-md-12">
+              <span class="font-weight-bold">4. Sáng kiến/ Đề xuất / Kiến nghị / Đóng góp ý kiến</span>
+            </div>
+          </div>
+          <div class="row height-80">
+            <div class="col-md-12">
+              <span><%= @result[:evaluation].overall_comments %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingD">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseD" aria-expanded="false" aria-controls="collapseD">
+            D. Ý KIẾN ĐÁNH GIÁ
+          </button>
+        </h2>
+      </div>
+      <div id="collapseD" class="collapse multi-collapse" aria-labelledby="headingD" data-parent="#accordionEvaluations">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <span class="highlight">Ngày thực hiện trao đổi 1:1 giữa người được đánh giá và CBQL trực tiếp đánh giá. </span>
+              <span class="font-weight-bold">Ngày: </span>
+              <span><%= @result[:evaluation].one_one_date %></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <span class="font-weight-bold">Ý kiến của người được đánh giá về kết quả đánh giá của CBQL trực tiếp đánh giá</span>
+              <span>(sau trao đổi 1:1 - ghi nhận ý kiến thực)</span>
+            </div>
+            <div class="col-md-2 text-right">
+              <span class="font-weight-bold">ĐỒNG Ý:</span>
+              <span class="highlight"><%= @result[:evaluation].get_is_agree %></span>
+            </div>
+            <div class="col-md-2 text-right">
+              <span class="font-weight-bold">KHÔNG ĐỒNG Ý:</span>
+              <span class="highlight"><%= @result[:evaluation].get_not_agree %></span>
+            </div>
+          </div>
+          <div class="row height-80">
+            <div class="col-md-12">
+              <span><%= @result[:evaluation].employee_comments %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingE">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseE" aria-expanded="false" aria-controls="collapseE">
+            E. KẾT QUẢ XẾP LOẠI NĂM (Phần dành cho Phòng Nhân sự)
+          </button>
+        </h2>
+      </div>
+      <div id="collapseE" class="collapse multi-collapse" aria-labelledby="headingE" data-parent="#accordionEvaluations">
+        <div class="card-body">
+          <div class="row gray-background">
+            <div class="col-md-12">
+              <span class="font-weight-bold">E.1 - KẾT QUẢ ĐÁNH GIÁ</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 border font-weight-bold">
+              <div class="row border-bottom">
+                <div class="col-md border-right">
+                  <span>Điểm của CBNV tự đánh giá</span>
+                </div>
+                <div class="col-md-2 border-right">
+                  <span><%= @result[:evaluation].employee_point %></span>
+                </div>
+                <div class="col-md-3 border-right">
+                  <span>Xếp loại đánh giá</span>
+                </div>
+                <div class="col-md-2">
+                  <span><%= @result[:evaluation].get_employee_rank %></span>
+                </div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-md border-right">
+                  <span>Điểm của CBQL trực tiếp đánh giá</span>
+                </div>
+                <div class="col-md-2 border-right">
+                  <span><%= @result[:evaluation].manager_point %></span>
+                </div>
+                <div class="col-md-3 border-right">
+                  <span>Xếp loại đánh giá</span>
+                </div>
+                <div class="col-md-2">
+                  <span><%= @result[:evaluation].get_manager_rank %></span>
+                </div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-md border-right">
+                  <span>Điểm của CBNV thẩm định 2</span>
+                </div>
+                <div class="col-md-2 border-right">
+                  <span><%= @result[:evaluation].appraiser_point %></span>
+                </div>
+                <div class="col-md-3 border-right">
+                  <span>Xếp loại đánh giá</span>
+                </div>
+                <div class="col-md-2">
+                  <span><%= @result[:evaluation].get_appraiser_rank %></span>
+                </div>
+              </div>
+              <div class="row lemon-background">
+                <div class="col-md border-right">
+                  <span>TRUNG BÌNH</span>
+                </div>
+                <div class="col-md-2 border-right">
+                  <span><%= @result[:evaluation].get_avg %></span>
+                </div>
+                <div class="col-md-3 border-right">
+                  <span>Xếp loại đánh giá</span>
+                </div>
+                <div class="col-md-2">
+                  <span><%= @result[:evaluation].get_avg_rank %></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-4 border">
+              <div class="row border-bottom">
+                <div class="col-md-2 border-right">
+                  <span>A</span>
+                </div>
+                <div class="col-md border-right">
+                  <span>Hoàn thành vượt mức</span>
+                </div>
+                <div class="col-md-4">
+                  <span>> 4.5 điểm</span>
+                </div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-md-2 border-right">
+                  <span>B</span>
+                </div>
+                <div class="col-md border-right">
+                  <span>Hoàn thành cơ bản</span>
+                </div>
+                <div class="col-md-4">
+                  <span>4 ~ 4.5 điểm</span>
+                </div>
+              </div>
+              <div class="row border-bottom">
+                <div class="col-md-2 border-right">
+                  <span>C</span>
+                </div>
+                <div class="col-md border-right">
+                  <span>Cần cải thiện</span>
+                </div>
+                <div class="col-md-4">
+                  <span>3 ~ 4 điểm</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 border-right">
+                  <span>D</span>
+                </div>
+                <div class="col-md border-right">
+                  <span>Không đạt yêu cầu</span>
+                </div>
+                <div class="col-md-4">
+                  <span>< 3 điểm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row gray-background margin-top">
+            <div class="col-md-12">
+              <span class="font-weight-bold">E.2 - KẾ HOẠCH PHÁT TRIỂN NHÂN SỰ</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 border-left border-right border-bottom">
+            </div>
+            <div class="col-md-5 border-right border-bottom">
+              <span>Quy hoạch cán bộ nguồn</span>
+            </div>
+            <div class="col-md-6">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 border-left border-right border-bottom">
+            </div>
+            <div class="col-md-5 border-right border-bottom">
+              <span>Giữ nguyên vị trí hiện tại</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 border-left border-right border-bottom">
+            </div>
+            <div class="col-md-5 border-right border-bottom">
+              <span>Đào tạo để phù hợp với vị trí hiện tại</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 border-left border-right border-bottom">
+            </div>
+            <div class="col-md-5 border-right border-bottom">
+              <span>Thay đổi vị trí công việc</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 border-left border-right border-bottom">
+            </div>
+            <div class="col-md-5 border-right border-bottom">
+              <span>Không ký hợp đồng</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-large btn-secondary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="collapseA collapseB collapseC collapseD collapseE" style="margin-top:5px;">
+      Hiển thị toàn bộ thông tin
+    </button>
+  </div>
+<% else %>
+<div class ="row">
+  <div class="col-md-12">
+    <span class="highlight">Không có bản đánh giá cho nhân viên: <%= @result[:employee].name %></span>
+  </div>
+</div>
+<% end %>

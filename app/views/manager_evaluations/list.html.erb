@@ -1,0 +1,28 @@
+<h3>ĐÁNH GIÁ NHÂN SỰ - DANH SÁCH NHÂN VIÊN CẦN ĐÁNH GIÁ</h3>
+<% if @evaluations.present? %>
+  <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
+    <div class="col-md-2 border-right">Họ tên</div>
+    <div class="col-md-4 border-right">Chức danh</div>
+    <div class="col-md-1 border-right">Mã nhân viên</div>
+    <div class="col-md-2 border-right">Ngày vào công ty</div>
+    <div class="col-md-3"></div>
+  </div>
+  <% @evaluations.each do |evaluation| %>
+    <div class="row border-left border-right border-bottom" style="margin: 0px;">
+      <div class="col-md-2 border-right padding-top"><%= evaluation.employee.name %></div>
+      <div class="col-md-4 border-right padding-top"><%= evaluation.employee.position %></div>
+      <div class="col-md-1 text-center border-right padding-top"><%= evaluation.employee.employee_number %></div>
+      <div class="col-md-2 text-center border-right padding-top"><%= evaluation.employee.registration_date %></div>
+      <div class="col-md-3 text-center">
+        <%= link_to t('evaluation'), manager_evaluations_edit_path(:employee_id => evaluation.employee_id), class: 'btn btn-sm btn-primary margin-10' %>
+        <%= link_to t('result'), manager_evaluations_path(:employee_id => evaluation.employee_id), class: 'btn btn-sm btn-primary margin-10' %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+<div class ="row">
+  <div class="col-md-12">
+    <span class="highlight">Không có nhân viên cần đánh giá.</span>
+  </div>
+</div>
+<% end %>
