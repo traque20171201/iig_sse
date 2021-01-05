@@ -53,15 +53,17 @@ class Evaluation < ApplicationRecord
   end
 
   def get_avg
-    return nil if employee_point.nil? || manager_point.nil? || appraiser_point.nil?
+    return nil if manager_point.nil? && appraiser_point.nil?
 
-    avg_point = (employee_point + manager_point + appraiser_point)/3
+    return manager_point if appraiser_point.nil?
+
+    avg_point = (manager_point + appraiser_point)/2
   end
 
   def get_avg_rank
-    return nil if employee_point.nil? || manager_point.nil? || appraiser_point.nil?
+    return nil if get_avg.nil?
 
-    avg_point = (employee_point + manager_point + appraiser_point)/3
+    avg_point = get_avg
 
     return 'A' if avg_point > 4.5
 

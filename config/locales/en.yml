@@ -39,6 +39,7 @@ en:
   password: "Password"
   login:
     submit: "Login"
+    success: "You are Logged In, %{username}"
   home: "Home"
   profile: "Profile"
   change_password: "Change Password"

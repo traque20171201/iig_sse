@@ -1,4 +1,8 @@
-<h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (Từ Trưởng nhóm trở xuống)</h3>
+<% if @result[:employee].manager? %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CÁN BỘ QUẢN LÝ (từ Phó phòng trở lên)</h3>
+<% else %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (từ Trưởng nhóm trở xuống)</h3>
+<% end %>
 <% if @result[:evaluation].present? %>
   <%= form_with url: "/employee/evaluations", method: :post do |form| %>
     <input type="hidden" name="id" value="<%= @result[:evaluation].id %>" />
@@ -101,52 +105,42 @@
           <div class="card-body">
             <div class="row header-background font-weight-bold text-center border">
               <div class="col-md-1 border-right">STT</div>
-              <div class="col-md-3 border-right">Tiêu chí</div>
+              <div class="col-md-4 border-right">Tiêu chí</div>
               <div class="col-md-1 border-right">Trọng số</div>
               <div class="col-md-1 border-right">Tự đánh giá</div>
-              <div class="col-md-2 border-right">Diễn giải cụ thể</div>
-              <div class="col-md-1 border-right">CBQL đánh giá</div>
-              <div class="col-md-2 border-right">Diễn giải cụ thể</div>
-              <div class="col-md-1">CBQL Thẩm định 2</div>
+              <div class="col-md-5">Diễn giải cụ thể</div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][id]" value="<%= evaluation_detail.id %>" />
+              <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][factor]" value="<%= evaluation_detail.master_evaluation_point.factor %>" />
               <div class="row border-left border-right border-bottom">
                 <div class="col-md-1 text-center border-right padding-top">
                   <span><%= evaluation_detail.evaluation_point_id %></span>
                 </div>
-                <div class="col-md-3 border-right padding-top">
+                <div class="col-md-4 border-right padding-top">
                   <span><%= evaluation_detail.master_evaluation_point.name %></span>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top">
-                  <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></span>
+                  <% if @result[:employee].manager? %>
+                    <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100/2, precision: 1) %></span>
+                  <% else %>
+                    <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></span>
+                  <% end %>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top">
                   <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_point]" value="<%= evaluation_detail.employee_point %>" step="1.0" min="1.0" max="5.0" />
                 </div>
-                <div class="col-md-2 border-right padding-top">
-                  <input type="text" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" value="<%= evaluation_detail.employee_comment %>" style="width:180px;" />
-                </div>
-                <div class="col-md-1 text-center border-right padding-top">
-                  <span><%= evaluation_detail.manager_point %></span>
-                </div>
-                <div class="col-md-2 border-right padding-top">
-                  <span><%= evaluation_detail.manager_comment %></span>
-                </div>
-                <div class="col-md-1 text-center padding-top">
-                  <span><%= evaluation_detail.appraiser_point %></span>
+                <div class="col-md-5 padding-top">
+                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" rows="2" style="width:100%;"><%= evaluation_detail.employee_comment %></textarea>
                 </div>
               </div>
             <% end %>
             <div class="row">
               <div class="col-md-1"></div>
-              <div class="col-md-3 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
+              <div class="col-md-4 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
               <div class="col-md-1 text-center padding-top"><span class="highlight">100%</span></div>
               <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].employee_point %></span></div>
-              <div class="col-md-2"></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].manager_point %></span></div>
-              <div class="col-md-2"></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
+              <div class="col-md-5"></div>
             </div>
           </div>
         </div>
@@ -168,9 +162,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="achievements" cols="130" rows="3">
-                  <%= @result[:evaluation].achievements %>
-                </textarea>
+                <textarea name="achievements" rows="3" style="width:100%;"><%= @result[:evaluation].achievements %></textarea>
               </div>
             </div>
             <div class="row border-bottom">
@@ -180,9 +172,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="positive_goals" cols="130" rows="3">
-                  <%= @result[:evaluation].positive_goals %>
-                </textarea>
+                <textarea name="positive_goals" rows="3" style="width:100%;"><%= @result[:evaluation].positive_goals %></textarea>
               </div>
             </div>
             <div class="row">
@@ -192,9 +182,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="negative_goals" cols="130" rows="3">
-                  <%= @result[:evaluation].negative_goals %>
-                </textarea>
+                <textarea name="negative_goals" rows="3" style="width:100%;"><%= @result[:evaluation].negative_goals %></textarea>
               </div>
             </div>
             <div class="row">
@@ -204,9 +192,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="overall_comments" cols="130" rows="3">
-                  <%= @result[:evaluation].overall_comments %>
-                </textarea>
+                <textarea name="overall_comments" rows="3" style="width:100%;"><%= @result[:evaluation].overall_comments %></textarea>
               </div>
             </div>
           </div>

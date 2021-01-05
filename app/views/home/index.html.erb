@@ -1,2 +1,6 @@
-<h3><%= t('welcome') %></h3>
-<%= link_to  t('signin'), new_employee_session_path, class: 'btn btn-large btn-success' %>
+<% if current_employee %>
+  <p><%= t('login.success', username: current_employee.name) %></p>
+<% else %>
+  <h3><%= t('welcome') %></h3>
+  <%= link_to  t('signin'), new_employee_session_path, class: 'btn btn-large btn-success' %>
+<% end %>

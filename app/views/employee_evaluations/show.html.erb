@@ -1,4 +1,8 @@
-<h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (Từ Trưởng nhóm trở xuống)</h3>
+<% if @result[:employee].manager? %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CÁN BỘ QUẢN LÝ (từ Phó phòng trở lên)</h3>
+<% else %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (từ Trưởng nhóm trở xuống)</h3>
+<% end %>
 <% if @result[:evaluation].present? %>
   <div class="row" style="margin-top:5px; margin-bottom:5px;">
     <div class="col-md-6">

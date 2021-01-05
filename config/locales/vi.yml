@@ -39,6 +39,7 @@ vi:
   password: "Mật khẩu"
   login:
     submit: "Đăng nhập"
+    success: "Đăng nhập thành công bởi, %{username}"
   home: "Trang chủ"
   profile: "Thông tin nhân viên"
   change_password: "Thay đổi mật khẩu"
