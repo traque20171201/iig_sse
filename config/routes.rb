@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     post 'appraiser/evaluations', to: 'appraiser_evaluations#save'
     get 'appraiser/evaluations', to: 'appraiser_evaluations#show'
     get 'guide', to: 'guide#index'
+    get 'guide/employee', to: 'guide#employee'
+    get 'guide/manager', to: 'guide#manager'
   end
 end

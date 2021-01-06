@@ -33,8 +33,17 @@
             </div>
           </li>
         <% end %>
-        <li class="nav-item <%= 'active' if controller_name=='guide' %>">
-          <%= link_to t('guide'), guide_path, class: 'nav-link' %>
+        <li class="nav-item dropdown <%= 'active' if controller_name=='guide' %>">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t('guide') %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+            <%= link_to t('guide_employee'), guide_employee_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to t('guide_manager'), guide_manager_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to t('guide_system'), guide_path, class: 'dropdown-item' %>
+          </div>
         </li>
       <% end %>
     </ul>
