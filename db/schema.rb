@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_103200) do
+ActiveRecord::Schema.define(version: 2021_01_06_111400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_103200) do
     t.integer "appraiser_point", comment: "Điểm quản lý thẩm định đánh giá"
     t.datetime "created_at", null: false, comment: "Ngày giờ tạo"
     t.datetime "updated_at", null: false, comment: "Ngày giờ cập nhật"
+    t.string "appraiser_comment", comment: "Thẩm định diễn giải cụ thể"
   end
 
   create_table "evaluations", id: { comment: "ID" }, comment: "Evaluations", force: :cascade do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_103200) do
     t.boolean "is_manager", default: false, null: false, comment: "Thuộc tiêu chí quản lý"
     t.datetime "created_at", null: false, comment: "Ngày giờ tạo"
     t.datetime "updated_at", null: false, comment: "Ngày giờ cập nhật"
+    t.string "guide", comment: "Hướng dẫn đánh giá cho tiêu chí"
   end
 
 end

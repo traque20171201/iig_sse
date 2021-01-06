@@ -13,6 +13,10 @@ down:
 stop:
 	docker-compose stop
 
+up-d:
+	rm -rf tmp/pids/server.pid
+	docker-compose up -d
+
 init:
 	export DB_PORT=$()
 	if [ -z "$$(docker network ls -q -f name=iig)" ]; then docker network create iig; fi
