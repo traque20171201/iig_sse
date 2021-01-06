@@ -67,6 +67,35 @@ vi:
   list_appraisers: "Danh sách thẩm định"
   draff: "Lưu tạm"
   save: "Hoàn thành"
+  password: "Mật khẩu"
+  changePassword: "Thay đổi mật khẩu"
+  password_confirmation: "Xác nhận mật khẩu"
+  current_password: "Mật khẩu hiện tại"
+  helpers:
+    submit:
+      create: "Tạo Mới"
+      update: "Cập Nhật"
   error:
     sign_in: "You need to sign in"
     permission: "You don't permission to access"
+  activerecord:
+    attributes:
+      employee:
+        role:
+          employee: "Nhân viên"
+          manager: "Quản lý"
+          admin: "Giám đốc"
+        password: "Mật khẩu"
+        current_password: "Mật khẩu hiện tại"
+    errors:
+      models:
+        employee:
+          password: "Mật khẩu"
+          current_password: "Mật khẩu hiện tại"
+          attributes:
+            password:
+              blank: "Mật khẩu không thể là rỗng"
+              too_short: "Mật khẩu phải từ 8 ký tự trở lên"
+              invalid: "Mật khẩu không hợp lệ"
+            current_password:
+              blank: "không thể là rỗng"

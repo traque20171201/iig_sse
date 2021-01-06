@@ -9,7 +9,12 @@ class GetEvaluationByEmployeeIdService
 
   def run!
     employee = Employee.find(@request_params.employee_id)
-    evaluation = Evaluation.find_by(employee_id: @request_params.employee_id)
+    evaluation = Evaluation.includes(
+      evaluation_details: [
+        :master_evaluation_point
+      ]
+    ).order("evaluation_details.evaluation_point_id ASC")
+    .find_by(employee_id: @request_params.employee_id)
     manager = Employee.find(evaluation.manager_id) if evaluation.present?
     appraiser = Employee.find(evaluation.appraiser_id) if evaluation&.appraiser_id.present?
 

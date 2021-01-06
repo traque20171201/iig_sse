@@ -67,6 +67,35 @@ en:
   list_appraisers: "List Appraisers"
   draff: "Draff"
   save: "Save"
+  password: "Password"
+  changePassword: "Change Password"
+  password_confirmation: "Password Confirmation"
+  current_password: "Current Password"
+  helpers:
+    submit:
+      create: "Create"
+      update: "Update"
   error:
     sign_in: "Bạn cần phải đăng nhập"
     permission: "Bạn không có quyền truy cập"
+  activerecord:
+    attributes:
+      employee:
+        role:
+          employee: "Employee"
+          manager: "Manager"
+          admin: "Administrator"
+        password: "Password"
+        current_password: "Current Password"
+    errors:
+      models:
+        employee:
+          password: "Mật khẩu"
+          current_password: "Mật khẩu hiện tại"
+          attributes:
+            password:
+              blank: "Mật khẩu không thể là rỗng"
+              too_short: "Mật khẩu phải từ 8 ký tự trở lên"
+              invalid: "Mật khẩu không hợp lệ"
+            current_password:
+              blank: "Mật khẩu hiện tại không thể là rỗng"

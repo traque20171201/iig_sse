@@ -2,8 +2,5 @@
 
 class EvaluationDetail < ApplicationRecord
   belongs_to :evaluation
-
-  def master_evaluation_point
-    MasterEvaluationPoint.find(evaluation_point_id)
-  end
+  belongs_to :master_evaluation_point, foreign_key: 'evaluation_point_id'
 end
