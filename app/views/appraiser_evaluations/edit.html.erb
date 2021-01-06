@@ -1,7 +1,12 @@
-<h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (Từ Trưởng nhóm trở xuống)</h3>
+<% if @result[:employee].manager? %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CÁN BỘ QUẢN LÝ (từ Phó phòng trở lên)</h3>
+<% else %>
+  <h3>ĐÁNH GIÁ NHÂN SỰ - DÀNH CHO CẤP NHÂN VIÊN (từ Trưởng nhóm trở xuống)</h3>
+<% end %>
 <% if @result[:evaluation].present? %>
-  <%= form_with url: "/employee/evaluations", method: :post do |form| %>
+  <%= form_with url: "/appraiser/evaluations", method: :post do |form| %>
     <input type="hidden" name="id" value="<%= @result[:evaluation].id %>" />
+    <input type="hidden" name="employee_id" value="<%= @result[:evaluation].employee_id %>" />
     <div class="row" style="margin-top:5px; margin-bottom:5px;">
       <div class="col-md-6">
         <span class="font-weight-bold">Trạng thái:</span>
@@ -106,27 +111,30 @@
               <div class="col-md-1 border-right">Tự đánh giá</div>
               <div class="col-md-2 border-right">Diễn giải cụ thể</div>
               <div class="col-md-1 border-right">CBQL đánh giá</div>
-              <div class="col-md-2 border-right">Diễn giải cụ thể</div>
+              <div class="col-md-2">Diễn giải cụ thể</div>
               <div class="col-md-1">CBQL Thẩm định 2</div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][id]" value="<%= evaluation_detail.id %>" />
+              <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][factor]" value="<%= evaluation_detail.master_evaluation_point.factor %>" />
               <div class="row border-left border-right border-bottom">
-                <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.evaluation_point_id %></div>
-                <div class="col-md-3 border-right padding-top"><%= evaluation_detail.master_evaluation_point.name %></div>
-                <div class="col-md-1 text-center border-right padding-top"><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></div>
                 <div class="col-md-1 text-center border-right padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_point]" value="<%= evaluation_detail.employee_point %>" step="1.0" min="1.0" max="5.0" />
+                  <span><%= evaluation_detail.evaluation_point_id %></span>
                 </div>
-                <div class="col-md-2 border-right padding-top">
-                  <input type="text" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" value="<%= evaluation_detail.employee_comment %>" />
+                <div class="col-md-3 border-right padding-top">
+                  <span><%= evaluation_detail.master_evaluation_point.name %></span>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][manager_point]" value="<%= evaluation_detail.manager_point %>" step="1.0" min="1.0" max="5.0" />
+                  <% if @result[:employee].manager? %>
+                    <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100/2, precision: 1) %></span>
+                  <% else %>
+                    <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></span>
+                  <% end %>
                 </div>
-                <div class="col-md-2 border-right padding-top">
-                  <input type="text" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][manager_comment]" value="<%= evaluation_detail.manager_comment %>" />
-                </div>
+                <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
+                <div class="col-md-2 border-right padding-top"><%= evaluation_detail.employee_comment %></div>
+                <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
+                <div class="col-md-2 border-right padding-top"><%= evaluation_detail.manager_comment %></div>
                 <div class="col-md-1 text-center padding-top">
                   <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" />
                 </div>
@@ -138,9 +146,9 @@
               <div class="col-md-1 text-center padding-top"><span class="highlight">100%</span></div>
               <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].employee_point %></span></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].manager_point %></span></div>
+              <div class="col-md-1"></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
+              <div class="col-md-1"></div>
             </div>
           </div>
         </div>
@@ -162,7 +170,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="achievements" value="<%= @result[:evaluation].achievements %>" cols="165" rows="3"></textarea>
+                <span><%= @result[:evaluation].achievements %></span>
               </div>
             </div>
             <div class="row border-bottom">
@@ -172,7 +180,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="positive_goals" value="<%= @result[:evaluation].positive_goals %>" cols="165" rows="3"></textarea>
+                <span><%= @result[:evaluation].positive_goals %></span>
               </div>
             </div>
             <div class="row">
@@ -182,7 +190,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="negative_goals" value="<%= @result[:evaluation].negative_goals %>" cols="165" rows="3"></textarea>
+                <span><%= @result[:evaluation].negative_goals %></span>
               </div>
             </div>
             <div class="row">
@@ -192,7 +200,7 @@
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="overall_comments" value="<%= @result[:evaluation].overall_comments %>" cols="165" rows="3"></textarea>
+                <span><%= @result[:evaluation].overall_comments %></span>
               </div>
             </div>
           </div>
@@ -212,7 +220,7 @@
               <div class="col-md-12">
                 <span class="highlight">Ngày thực hiện trao đổi 1:1 giữa người được đánh giá và CBQL trực tiếp đánh giá. </span>
                 <span class="font-weight-bold">Ngày: </span>
-                <input type="date" name="one_one_date" value="<%= @result[:evaluation].one_one_date %>" />
+                <span><%= @result[:evaluation].one_one_date %></span>
               </div>
             </div>
             <div class="row">
@@ -220,16 +228,18 @@
                 <span class="font-weight-bold">Ý kiến của người được đánh giá về kết quả đánh giá của CBQL trực tiếp đánh giá</span>
                 <span>(sau trao đổi 1:1 - ghi nhận ý kiến thực)</span>
               </div>
-              <div class="col-md-4 text-right">
-                <input type="radio" id="is_agree" name="is_agree" value="true" />
-                <label for="is_agree" class="font-weight-bold">ĐỒNG Ý</label>
-                <input type="radio" id="is_not_agree" name="is_agree" value="false" />
-                <label for="is_not_agree" class="font-weight-bold">KHÔNG ĐỒNG Ý</label>
+              <div class="col-md-2 text-right">
+                <span class="font-weight-bold">ĐỒNG Ý:</span>
+                <span class="highlight"><%= @result[:evaluation].get_is_agree %></span>
+              </div>
+              <div class="col-md-2 text-right">
+                <span class="font-weight-bold">KHÔNG ĐỒNG Ý:</span>
+                <span class="highlight"><%= @result[:evaluation].get_not_agree %></span>
               </div>
             </div>
             <div class="row height-80">
               <div class="col-md-12">
-                <textarea name="employee_comments" value="<%= @result[:evaluation].employee_comments %>" cols="165" rows="3"></textarea>
+                <span><%= @result[:evaluation].employee_comments %></span>
               </div>
             </div>
           </div>
@@ -320,7 +330,7 @@
                     <span>Hoàn thành vượt mức</span>
                   </div>
                   <div class="col-md-4">
-                    <span>> 4.5 điểm</span>
+                    <span>>= 3.5 điểm</span>
                   </div>
                 </div>
                 <div class="row border-bottom">
@@ -331,7 +341,7 @@
                     <span>Hoàn thành cơ bản</span>
                   </div>
                   <div class="col-md-4">
-                    <span>4 ~ 4.5 điểm</span>
+                    <span>2.8 ~ 3.4 điểm</span>
                   </div>
                 </div>
                 <div class="row border-bottom">
@@ -342,7 +352,7 @@
                     <span>Cần cải thiện</span>
                   </div>
                   <div class="col-md-4">
-                    <span>3 ~ 4 điểm</span>
+                    <span>1.9 ~ 2.7 điểm</span>
                   </div>
                 </div>
                 <div class="row">
@@ -353,7 +363,7 @@
                     <span>Không đạt yêu cầu</span>
                   </div>
                   <div class="col-md-4">
-                    <span>< 3 điểm</span>
+                    <span><= 1.8 điểm</span>
                   </div>
                 </div>
               </div>

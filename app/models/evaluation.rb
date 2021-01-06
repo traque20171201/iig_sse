@@ -53,6 +53,8 @@ class Evaluation < ApplicationRecord
   end
 
   def get_avg
+    return nil if manager_point.nil?
+
     return nil if manager_point.nil? && appraiser_point.nil?
 
     return manager_point if appraiser_point.nil?

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GetListEvaluationsService
+class GetEvaluationsForManagerService
   attr_reader :result
   
   def initialize(request_params)

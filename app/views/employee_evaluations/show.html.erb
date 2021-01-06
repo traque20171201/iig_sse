@@ -113,7 +113,13 @@
             <div class="row border-left border-right border-bottom">
               <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.evaluation_point_id %></div>
               <div class="col-md-3 border-right padding-top"><%= evaluation_detail.master_evaluation_point.name %></div>
-              <div class="col-md-1 text-center border-right padding-top"><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></div>
+              <div class="col-md-1 text-center border-right padding-top">
+                <% if @result[:employee].manager? %>
+                  <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100/2, precision: 1) %></span>
+                <% else %>
+                  <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></span>
+                <% end %>
+              </div>
               <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
               <div class="col-md-2 border-right padding-top"><%= evaluation_detail.employee_comment %></div>
               <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>

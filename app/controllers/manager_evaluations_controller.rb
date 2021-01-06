@@ -4,7 +4,7 @@ class ManagerEvaluationsController < ApplicationController
   def list
     request_params = GetEvaluationRequestParams.new(current_employee.id)
     request_params.validate!
-    service = GetListEvaluationsService.new(request_params)
+    service = GetEvaluationsForManagerService.new(request_params)
     service.run!
     @evaluations = service.result
   end
@@ -14,7 +14,12 @@ class ManagerEvaluationsController < ApplicationController
     request_params.validate!
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    @result = service.result
+    if service.result[:evaluation].status_before_type_cast >= 4
+      flash[:alert] = 'Đã hoàn thành đánh giá. Không thể thực hiện đánh giá lại nữa.'
+      redirect_to manager_evaluations_path(employee_id: request_params.employee_id)
+    else
+      @result = service.result
+    end
   end
 
   def save
