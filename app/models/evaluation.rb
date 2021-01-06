@@ -19,37 +19,37 @@ class Evaluation < ApplicationRecord
   def get_employee_rank
     return nil if employee_point.nil?
 
-    return 'A' if employee_point > 4.5
+    return 'A' if employee_point >= 3.5
 
-    return 'B' if employee_point > 4 && employee_point <= 4.5
+    return 'B' if employee_point > 2.7 && employee_point < 3.5
 
-    return 'C' if employee_point > 3 && employee_point <= 4
+    return 'C' if employee_point > 1.8 && employee_point <= 2.7
 
-    return 'D' if employee_point <= 3
+    return 'D' if employee_point <= 1.8
   end
 
   def get_manager_rank
     return nil if manager_point.nil?
 
-    return 'A' if manager_point > 4.5
+    return 'A' if manager_point >= 3.5
 
-    return 'B' if manager_point > 4 && manager_point <= 4.5
+    return 'B' if manager_point > 2.7 && manager_point < 3.5
 
-    return 'C' if manager_point > 3 && manager_point <= 4
+    return 'C' if manager_point > 1.8 && manager_point <= 2.7
 
-    return 'D' if manager_point <= 3
+    return 'D' if manager_point <= 1.8
   end
 
   def get_appraiser_rank
     return nil if appraiser_point.nil?
 
-    return 'A' if appraiser_point > 4.5
+    return 'A' if appraiser_point >= 3.5
 
-    return 'B' if appraiser_point > 4 && appraiser_point <= 4.5
+    return 'B' if appraiser_point > 2.7 && appraiser_point < 3.5
 
-    return 'C' if appraiser_point > 3 && appraiser_point <= 4
+    return 'C' if appraiser_point > 1.8 && appraiser_point <= 2.7
 
-    return 'D' if appraiser_point <= 3
+    return 'D' if appraiser_point <= 1.8
   end
 
   def get_avg
@@ -65,12 +65,12 @@ class Evaluation < ApplicationRecord
 
     avg_point = get_avg
 
-    return 'A' if avg_point > 4.5
+    return 'A' if avg_point >= 3.5
 
-    return 'B' if avg_point > 4 && avg_point <= 4.5
+    return 'B' if avg_point > 2.7 && avg_point < 3.5
 
-    return 'C' if avg_point > 3 && avg_point <= 4
+    return 'C' if avg_point > 1.8 && avg_point <= 2.7
 
-    return 'D' if avg_point <= 3
+    return 'D' if avg_point <= 1.8
   end
 end
