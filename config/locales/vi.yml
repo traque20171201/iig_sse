@@ -100,3 +100,7 @@ vi:
               invalid: "Mật khẩu không hợp lệ"
             current_password:
               blank: "không thể là rỗng"
+  activemodel:
+    errors:
+        messages:
+          model_invalid: "Lỗi nhập dữ liệu."

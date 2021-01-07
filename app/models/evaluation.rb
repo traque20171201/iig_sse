@@ -60,6 +60,7 @@ class Evaluation < ApplicationRecord
     return manager_point if appraiser_point.nil?
 
     avg_point = (manager_point + appraiser_point)/2
+    avg_point.round(1)
   end
 
   def get_avg_rank
