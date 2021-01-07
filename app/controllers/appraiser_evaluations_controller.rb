@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class AppraiserEvaluationsController < ApplicationController  
+class AppraiserEvaluationsController < ApplicationController
+  before_action :check_permission_before
+
   def list
     request_params = GetEvaluationRequestParams.new(current_employee.id)
     request_params.validate!
@@ -55,6 +57,18 @@ class AppraiserEvaluationsController < ApplicationController
 
   def check_permission(current_employee_id, employee_id)
     Evaluation.exists?(:appraiser_id => current_employee_id, :employee_id => employee_id)
+  end
+
+  def check_permission_before
+    if current_employee.nil?
+      flash[:alert] = t('error.sign_in')
+      redirect_to root_path
+    else
+      if !current_employee.manager?
+        flash[:alert] = t('error.permission')
+        redirect_to root_path
+      end
+    end
   end
 end
   

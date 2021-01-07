@@ -1,6 +1,6 @@
 INSERT INTO employees(id,employee_number,name,phone,email,encrypted_password,gender,birth_date,registration_date,position,branch,role,department_id,created_at,updated_at) VALUES
-(1,'HN0001','Admin',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,null,'08/05/2000','Giám đốc Điều hành','Hà Nội',9,1,now(),now()),
-(2,'HN0360','Nguyễn Thị Hoa',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'6/22/1984','8/24/2020','Phó Giám đốc Điều hành','Hà Nội',1,'1',now(),now()),
+(1,'HN0001','Nguyễn Vũ Hồng Anh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,null,'08/05/2000','Giám đốc Điều hành','Hà Nội',3,1,now(),now()),
+(2,'HN0360','Nguyễn Thị Hoa',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'6/22/1984','8/24/2020','Phó Giám đốc Điều hành','Hà Nội',3,1,now(),now()),
 (3,'HN0030','Đoàn Nguyễn Vân Khanh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'6/1/1993','6/1/2015','Trưởng Ban','Hà Nội',1,2,now(),now()),
 (4,'HN0306','Trịnh Thị Phương Dung',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'9/23/1990','2/24/2020','Nhân viên Thư ký - hành chính','Hà Nội',0,2,now(),now()),
 (5,'HN0101','Vũ Minh Châu',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'12/16/1992','10/1/2018','Nhân viên Dịch vụ khách hàng','Hà Nội',0,2,now(),now()),
@@ -162,7 +162,6 @@ INSERT INTO employees(id,employee_number,name,phone,email,encrypted_password,gen
 (161,'HCM0002','Nguyễn Thị Thiên Trang',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'11/1/1986','8/21/2009','Nhân viên thu ngân','HCM',0,17,now(),now()),
 (162,'HCM0005','Cao Thị Lài',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/4/1973','5/19/2010','Chuyên viên kinh doanh','HCM',0,18,now(),now()),
 (163,'HCM0014','Võ Thúy Diệp',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'7/15/1976','5/6/2013','Trưởng nhóm SP Tiếng Anh','HCM',0,18,now(),now()),
-(164,'HCM0021','Hứa Nguyễn Vĩnh Tân',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'6/27/1985','6/1/2015','Nhân viên kinh doanh','HCM',0,18,now(),now()),
 (165,'HCM0037','Nguyễn Mạnh Hòa',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'9/21/1993','4/3/2018','Quyền Trưởng nhóm SP Tin học','HCM',0,18,now(),now()),
 (166,'HCM0033','Đào Huỳnh Trân',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'12/5/1990','12/13/2017','Chuyên viên hỗ trợ kinh doanh','HCM',0,18,now(),now()),
 (167,'HCM0027','Đào Thị Ngọc Ánh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/26/1994','11/1/2016','Trưởng nhóm Quầy','HCM',0,19,now(),now()),
@@ -203,4 +202,6 @@ INSERT INTO employees(id,employee_number,name,phone,email,encrypted_password,gen
 (202,'DN0016','Phan Hồng Thiên Phú',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'6/30/1985','2/10/2020','Nhân viên Lái xe ','Đà Nẵng',0,20,now(),now()),
 (203,'DN0015','Nguyễn Thị Lan Anh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'7/21/1982','8/21/2019','Chuyên viên kinh doanh','Đà Nẵng',0,20,now(),now()),
 (204,'DN0006','Ngô Thị Hồng Duyên',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/19/1985','7/4/2016','Nhân viên kinh doanh','Đà Nẵng',0,20,now(),now()),
-(205,'HN0363','Nguyễn Tuyết Minh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'11/19/1980','9/21/2020','Phó Chánh Văn Phòng','Hà Nội',1,4,now(),now())
+(205,'HN0363','Nguyễn Tuyết Minh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'11/19/1980','9/21/2020','Phó Chánh Văn Phòng','Hà Nội',1,4,now(),now()),
+(206,'HN0363','Đoàn Hồng Nam',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/7/1965','2/1/2002','Tổng Giám đốc, Chủ tịch HĐQT','Hà Nội',3,1,now(),now()),
+(207,'VN9999','Admin',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'01/01/1900','01/01/2000','Administrator','Hà Nội',9,1,now(),now())
