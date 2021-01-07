@@ -1,17 +1,14 @@
 # frozen_string_literal: true
 
 class EmployeeEvaluationsController < ApplicationController
+  before_action :check_permission
+
   def edit
     request_params = GetEvaluationRequestParams.new(current_employee.id)
     request_params.validate!
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    if service.result[:evaluation].status_before_type_cast >= 2
-      flash[:alert] = 'Đã hoàn thành đánh giá. Không thể thực hiện đánh giá lại nữa.'
-      redirect_to employee_evaluations_path 
-    else
-      @result = service.result
-    end
+    @result = service.result
   end
 
   def save
@@ -29,5 +26,14 @@ class EmployeeEvaluationsController < ApplicationController
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
     @result = service.result
+  end
+
+  private
+
+  def check_permission
+    if current_employee.nil?
+      flash[:alert] = t('error.sign_in')
+      redirect_to root_path
+    end
   end
 end
