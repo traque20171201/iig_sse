@@ -1,0 +1,36 @@
+version: "3"
+networks:
+  iig:
+    external: true
+volumes:
+  bundle:
+  postgres:
+services:
+  db:
+    image: postgres:13-alpine
+    ports:
+      - 5437:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  app:
+    build:
+      context: .
+    stdin_open: true
+    tty: true
+    command: bin/rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - bundle:/usr/local/bundle
+      - .:/usr/src/app:delegated
+      - /vendor
+      - /tmp
+      - /log
+      - /.git
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    networks:
+      - iig
+      - default

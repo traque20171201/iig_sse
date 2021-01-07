@@ -24,6 +24,7 @@ Things you may want to cover:
 * ...
 
 I. Hướng dẫn setup hệ thống
+
 Step 1: Run lệnh
 make build (sudo make build) 
 
@@ -36,10 +37,11 @@ make init-data (sudo make init-data)
 Step 4: Run lệnh
 make seed-fu (sudo make seed-fu)
 
-Stp 5: Test
-Truy cập link: localhost:3000 để xác nhận hệ thống được setup thành công
+Step 5: Run lệnh
+make fix-webpacker (sudo make fix-webpacker)
 
-Step 6: Fix error webpacker nếu khi test bị lỗi Run lệnh make fix-webpacker (sudo make fix-webpacker)
+Step 6: Test
+Truy cập link: localhost:3000 để xác nhận hệ thống được setup thành công
 
 II. Hướng dẫn update hệ thống
 Step 1: Vào thư mục source code lưu trên server

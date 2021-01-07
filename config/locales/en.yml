@@ -30,4 +30,72 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: "Staffing System Evaluation"
+  website: "iigvietnam.com"
+  welcome: "Staffing System Evaluation. Please log in to access the Evaluation Portal."
+  signin: "Sign In"
+  signout: "Sign Out"
+  employee_number: "Employee Number"
+  password: "Password"
+  login:
+    submit: "Login"
+    success: "You are Logged In, %{username}"
+  home: "Home"
+  guide: "Guide"
+  guide_employee: "Guide For Employee"
+  guide_manager: "Guide For Manager"
+  guide_system: "Guide Using System"
+  profile: "Profile"
+  change_password: "Change Password"
+  employee: "Employee"
+  manager: "Manager"
+  admin: "Admin"
+  appraiser: "Appraiser"
+  employee_info: "Employee Infomation"
+  name: "Fullname"
+  email: "Email"
+  phone: "Telephone"
+  birthday: "Birthday"
+  registration_date: "Date of joining"
+  position: "Position"
+  branch: "Branch"
+  role: "Role"
+  department: "Department"
+  evaluation: "Evaluation"
+  result: "Result"
+  list_evaluations: "List Evaluations"
+  list_appraisers: "List Appraisers"
+  draff: "Draff"
+  save: "Save"
+  password: "Password"
+  changePassword: "Change Password"
+  password_confirmation: "Password Confirmation"
+  current_password: "Current Password"
+  helpers:
+    submit:
+      create: "Create"
+      update: "Update"
+  error:
+    sign_in: "Bạn cần phải đăng nhập"
+    permission: "Bạn không có quyền truy cập"
+  activerecord:
+    attributes:
+      employee:
+        role:
+          employee: "Employee"
+          manager: "Manager"
+          admin: "Administrator"
+        password: "Password"
+        current_password: "Current Password"
+    errors:
+      models:
+        employee:
+          password: "Mật khẩu"
+          current_password: "Mật khẩu hiện tại"
+          attributes:
+            password:
+              blank: "Mật khẩu không thể là rỗng"
+              too_short: "Mật khẩu phải từ 8 ký tự trở lên"
+              invalid: "Mật khẩu không hợp lệ"
+            current_password:
+              blank: "Mật khẩu hiện tại không thể là rỗng"
