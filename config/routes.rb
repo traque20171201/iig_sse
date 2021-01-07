@@ -25,5 +25,7 @@ Rails.application.routes.draw do
     get 'guide', to: 'guide#index'
     get 'guide/employee', to: 'guide#employee'
     get 'guide/manager', to: 'guide#manager'
+    get 'admin/employees/list', to: 'admin#list_employees'
+    get 'admin/evaluations/list', to: 'admin#list_evaluations'
   end
 end

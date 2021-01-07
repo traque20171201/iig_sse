@@ -33,6 +33,18 @@
             </div>
           </li>
         <% end %>
+        <% if current_employee.admin? %>
+          <li class="nav-item dropdown <%= 'active' if controller_name=='admin' %>">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin') %>
+            </a>            
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+              <%= link_to t('list_evaluations'), admin_evaluations_list_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t('list_employees'), admin_employees_list_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+        <% end %>
         <li class="nav-item dropdown <%= 'active' if controller_name=='guide' %>">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= t('guide') %>

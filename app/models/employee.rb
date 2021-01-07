@@ -6,7 +6,7 @@ class Employee < ApplicationRecord
 
   PASSWORD_FORMAT = /\A(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x
 
-  enum role: {employee: 0, manager: 1, admin: 9}
+  enum role: {employee: 0, manager: 1, ceo: 2, chairman: 3, admin: 9}
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -33,7 +33,7 @@ class Employee < ApplicationRecord
   end
 
   def admin?
-    return true if role == 9
+    return true if role_before_type_cast == 9
 
     return false
   end
