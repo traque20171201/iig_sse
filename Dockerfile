@@ -13,6 +13,10 @@ WORKDIR /usr/src/app
 COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle install
-RUN bundle exec rails webpacker:install
+
+ENV RAILS_ENV production 
+ENV RACK_ENV production
+
 COPY . /usr/src/app
-RUN chmod 777 /usr/src/app/scripts/db_migrate
+
+RUN bundle exec rake SECRET_KEY_BASE=d140269c106b6d064cdd670a5aace0bbbb1400de545377a47836dbdab8104f2fdf0ab87e6b7982819d1bcc2ccf6a5f093985a0895970f01f30b0b15378a090e9 assets:precompile
