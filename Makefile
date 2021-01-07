@@ -19,7 +19,7 @@ db-migrate-down:
 	docker-compose run --rm -T app bin/rails db:schema:dump
 
 init-data:
-	docker-compose run --rm app psql -U postgres -d app_development -h db -p 5432 -f ./db/prod_data_sql/00_data_insert.sql
+	docker-compose run --rm app psql -U postgres -d iig_sse -h db -p 5432 -f ./db/prod_data_sql/00_data_insert.sql
 
 seed-fu:
 	docker-compose run --rm app bin/rails db:seed_fu

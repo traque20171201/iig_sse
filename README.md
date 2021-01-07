@@ -45,14 +45,14 @@ Step 5: Run lệnh
 
 make seed-fu (sudo make seed-fu)
 
-Step 6: Run lệnh
-
-make fix-webpacker (sudo make fix-webpacker)
-
-Step 7: Truy cập vào link bên dưới để xác nhận hệ thống hoạt động bình thường
+Step 6: Truy cập vào link bên dưới để xác nhận hệ thống hoạt động bình thường
 
 https://sse.iigvietnam.com/
 
+Nếu truy cập vào hệ thống bị lỗi thì thực hiện step sau:
+Step 6.1: Run lệnh
+
+make fix-webpacker (sudo make fix-webpacker)
 
 II. Hướng dẫn upgrade hệ thống
 
