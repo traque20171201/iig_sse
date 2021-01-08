@@ -1,4 +1,16 @@
 <h3>DANH SÁCH NHÂN VIÊN</h3>
+<%= form_with url: "/admin/employees/list", method: :get do |form| %>
+  <div class="row margin-bottom">
+    <div class="col-md-4">
+      <%= form.select :department, @departments.collect { |department| [department.name, department.id] }.unshift(['Phòng ban', '']),
+          { :selected => @department_id }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-right">
+      <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
+    </div>
+  </div>
+<% end %>
 <% if @employees.present? %>
   <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
     <div class="col-md-1 border-right">Mã nhân viên</div>
@@ -6,8 +18,12 @@
     <div class="col-md-2 border-right">Phòng ban</div>
     <div class="col-md-3 border-right">Chức danh</div>
     <div class="col-md-1 border-right">Chi nhánh</div>
-    <div class="col-md-2 border-right">Ngày vào công ty</div>
-    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-5 border-right">Ngày vào công ty</div>
+        <div class="col-md-7 border-right"></div>
+      </div>
+    </div>
   </div>
   <% @employees.each do |employee| %>
     <div class="row border-left border-right border-bottom" style="margin: 0px;">
@@ -16,10 +32,23 @@
       <div class="col-md-2 border-right padding-top"><%= employee.department.name %></div>
       <div class="col-md-3 border-right padding-top"><%= employee.position %></div>
       <div class="col-md-1 border-right padding-top"><%= employee.branch %></div>
-      <div class="col-md-2 border-right padding-top"><%= employee.registration_date %></div>
-      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-5 border-right padding-top"><%= employee.registration_date %></div>
+          <div class="col-md-7 padding-top">
+            <%= link_to t('reset_password'), admin_password_reset_path(:employee_id => employee.id), method: :post, data: { confirm: "Bạn có muốn khôi phục mật khẩu cho nhân viên " +employee.name + "  không?" }, class: 'btn btn-sm btn-primary margin-top' %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= paginate @employees %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 <% else %>
 <div class ="row">
   <div class="col-md-12">

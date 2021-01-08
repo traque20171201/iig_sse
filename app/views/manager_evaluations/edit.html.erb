@@ -110,7 +110,7 @@
               <div class="col-md-1 border-right">Trọng số</div>
               <div class="col-md-1 border-right">Tự đánh giá</div>
               <div class="col-md-3 border-right">Diễn giải cụ thể</div>
-              <div class="col-md-1 border-right">CBQL 1</div>
+              <div class="col-md-1 border-right" title="Điểm số từ 1 tới 4 và không đánh điểm lẻ">CBQL 1</div>
               <div class="col-md-3">Diễn giải cụ thể</div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
@@ -137,7 +137,7 @@
                   <span><%= evaluation_detail.employee_comment %></span>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][manager_point]" value="<%= evaluation_detail.manager_point %>" step="1.0" min="1.0" max="4.0" required />
+                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][manager_point]" value="<%= evaluation_detail.manager_point %>" step="1.0" min="1.0" max="4.0" required title="Điểm số từ 1 tới 4 và không đánh điểm lẻ" />
                 </div>
                 <div class="col-md-3 border-right padding-top">
                   <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][manager_comment]" rows="2" style="width:100%;" placeholder="Bắt buộc phải nhập 'Điểm của quản lý đánh giá' và 'Diễn giải cụ thể'" required><%= evaluation_detail.manager_comment %></textarea>

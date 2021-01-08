@@ -1,0 +1,57 @@
+<h3>CHỈNH SỬA ĐÁNH GIÁ NHÂN SỰ</h3>
+<div class ="row margin-bottom-30">
+  <div class="col-md-2">
+    <span class="font-weight-bold">Họ tên:</span>
+    <span><%= @evaluation.employee.name %></span>
+  </div>
+  <div class="col-md-3">
+    <span class="font-weight-bold">Chức danh:</span>
+    <span><%= @evaluation.employee.position %></span>
+  </div>
+  <div class="col-md-2">
+    <span class="font-weight-bold">Mã NV:</span>
+    <span><%= @evaluation.employee.employee_number %></span>
+  </div>
+  <div class="col-md-3">
+    <span class="font-weight-bold">Ngày vào CTy:</span>
+    <span><%= @evaluation.employee.registration_date %></span>
+  </div>
+</div>
+<%= form_with url: "/admin/evaluations/edit", method: :post do |form| %>
+  <input type="hidden" name="id" value="<%= @evaluation.id %>" />
+  <div class="row margin-bottom">
+    <div class="col-md-12">
+      <div class="row margin-bottom">
+        <div class="col-md-2 padding-top"><span class="font-weight-bold">Cán bộ quản lý đánh giá 1</span></div>
+        <div class="col-md-3">
+          <%= form.select :manager_id, @managers.collect { |manager| [manager.name, manager.id] }, 
+                { :selected => @manager_id }, { class: "form-control" } %>
+        </div>
+        <div class="col-md-7"></div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-md-2 padding-top"><span class="font-weight-bold">Cán bộ quản lý đánh giá 2</span></div>
+        <div class="col-md-3">
+          <%= form.select :appraiser_id, @managers.collect { |manager| [manager.name, manager.id] }, 
+                { :selected => @appraiser_id }, { class: "form-control" } %>
+        </div>
+        <div class="col-md-7"></div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-md-2 padding-top"><span class="font-weight-bold">Trạng thái đánh giá</span></div>
+        <div class="col-md-3">
+          <%= form.select :status, [['Nhân viên chưa đánh giá', 0], ['Nhân viên đang đánh giá', 1], ['Nhân viên hoàn thành đánh giá', 2], 
+                                    ['Quản lý trực tiếp đang đánh giá', 3], ['Quản lý trực tiếp hoàn thành đánh giá', 4], ['Nhân viên phản hồi đánh giá', 5],
+                                    ['Quản lý thẩm định đang đánh giá', 6], ['Hoàn thành đánh giá', 7]], 
+                { :selected => @status }, { class: "form-control" } %>
+        </div>
+        <div class="col-md-7"></div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-md-12">
+            <%= form.submit t('save'), class: 'btn btn-large btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

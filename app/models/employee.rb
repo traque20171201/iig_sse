@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Employee < ApplicationRecord
+  paginates_per 20
+
   belongs_to :department
   has_many :evaluations
 
@@ -21,6 +23,8 @@ class Employee < ApplicationRecord
                        :format => {:with => PASSWORD_FORMAT},
                        :allow_blank => true,
                        :on => :update
+
+  scope :where_by_department_id, ->(department_id) { where(department_id: department_id) if department_id.present? }
 
   def self.human_enum_name(enum_name, enum_value)
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{enum_name.to_s.pluralize}.#{enum_value}")

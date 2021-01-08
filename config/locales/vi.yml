@@ -64,15 +64,19 @@ vi:
   evaluation: "Đánh giá"
   result: "Kết quả"
   feedback: "Phản hồi"
+  reset_password: "Khôi phục mật khẩu"
   list_evaluations: "Danh sách đánh giá"
   list_appraisers: "Danh sách thẩm định"
   list_employees: "Danh sách nhân viên"
+  edit_evaluation: "Chỉnh sửa đánh giá"
   draff: "Lưu tạm"
   save: "Hoàn thành"
+  search: "Tìm kiếm"
   password: "Mật khẩu"
   changePassword: "Thay đổi mật khẩu"
   password_confirmation: "Xác nhận mật khẩu"
   current_password: "Mật khẩu hiện tại"
+  reset_password_success: "Khôi phục mật khẩu thành công cho nhân viên %{username}"
   helpers:
     submit:
       create: "Tạo Mới"
@@ -105,3 +109,19 @@ vi:
     errors:
         messages:
           model_invalid: "Lỗi nhập dữ liệu."
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"

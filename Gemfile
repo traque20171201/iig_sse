@@ -62,3 +62,6 @@ gem 'seed-fu', '~> 2.3', '>= 2.3.9'
 
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem 'devise', '~> 4.7', '>= 4.7.3'
+
+# Kaminari supports multiple ORMs
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
