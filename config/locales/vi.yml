@@ -64,6 +64,7 @@ vi:
   evaluation: "Đánh giá"
   result: "Kết quả"
   feedback: "Phản hồi"
+  reset_password: "Khôi phục mật khẩu"
   list_evaluations: "Danh sách đánh giá"
   list_appraisers: "Danh sách thẩm định"
   list_employees: "Danh sách nhân viên"
@@ -74,6 +75,7 @@ vi:
   changePassword: "Thay đổi mật khẩu"
   password_confirmation: "Xác nhận mật khẩu"
   current_password: "Mật khẩu hiện tại"
+  reset_password_success: "Khôi phục mật khẩu thành công cho nhân viên %{username}"
   helpers:
     submit:
       create: "Tạo Mới"

@@ -29,5 +29,6 @@ Rails.application.routes.draw do
     get 'guide/manager', to: 'guide#manager'
     get 'admin/employees/list', to: 'admin#list_employees'
     get 'admin/evaluations/list', to: 'admin#list_evaluations'
+    post 'admin/password/reset', to: 'admin#reset_password'
   end
 end

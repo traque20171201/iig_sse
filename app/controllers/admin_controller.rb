@@ -23,6 +23,17 @@ class AdminController < ApplicationController
                             .order("status, id ASC").page params[:page]
   end
 
+  def reset_password
+    employee = Employee.find(params[:employee_id])
+
+    employee.update!(
+      encrypted_password: '$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi'
+    )
+
+    flash[:notice] = t('reset_password_success', username: employee.name)
+    redirect_to admin_employees_list_path
+  end
+
   def check_permission_before
     if current_employee.nil?
       flash[:alert] = t('error.sign_in')

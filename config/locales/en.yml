@@ -64,6 +64,7 @@ en:
   evaluation: "Evaluation"
   result: "Result"
   feedback: "Feedback"
+  reset_password: "Reset Password"
   list_evaluations: "List Evaluations"
   list_appraisers: "List Appraisers"
   list_employees: "List Employees"
@@ -74,6 +75,7 @@ en:
   changePassword: "Change Password"
   password_confirmation: "Password Confirmation"
   current_password: "Current Password"
+  reset_password_success: "Reset password success for %{username}"
   helpers:
     submit:
       create: "Create"

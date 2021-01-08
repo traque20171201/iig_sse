@@ -116,7 +116,7 @@
               <div class="col-md-2 border-right">Diễn giải cụ thể</div>
               <div class="col-md-1 border-right">CBQL 1</div>
               <div class="col-md-2 border-right">Diễn giải cụ thể</div>
-              <div class="col-md-1 border-right">CBQL 2</div>
+              <div class="col-md-1 border-right" title="Điểm số từ 1 tới 4 và không đánh điểm lẻ">CBQL 2</div>
               <div class="col-md-2">Diễn giải cụ thể</div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
@@ -145,7 +145,7 @@
                 <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
                 <div class="col-md-2 border-right padding-top"><%= evaluation_detail.manager_comment %></div>
                 <div class="col-md-1 text-center border-right padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" required />
+                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" required title="Điểm số từ 1 tới 4 và không đánh điểm lẻ" />
                 </div>
                 <div class="col-md-2 padding-top">
                   <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_comment]" rows="2" style="width:100%;" placeholder="Bắt buộc phải nhập" required><%= evaluation_detail.appraiser_comment %></textarea>
