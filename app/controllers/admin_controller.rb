@@ -23,6 +23,24 @@ class AdminController < ApplicationController
                             .order("status, id ASC").page params[:page]
   end
 
+  def edit_evaluation
+    @evaluation = Evaluation.preload(employee: [:department]).find(params[:evaluation_id])
+    @managers = Employee.where("role > 0")
+
+    @manager_id = @evaluation.manager_id
+    @appraiser_id = @evaluation.appraiser_id
+    @status = @evaluation.status_before_type_cast
+  end
+
+  def save_evaluation
+    request_params = AdminEvaluationEditRequestParams.new(params)
+    request_params.validate!
+    service = AdminEvaluationEditService.new(request_params)
+    service.run!
+    flash[:notice] = service.result
+    redirect_to admin_evaluations_list_path
+  end
+
   def reset_password
     employee = Employee.find(params[:employee_id])
 
