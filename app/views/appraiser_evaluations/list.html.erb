@@ -1,19 +1,19 @@
 <h3>ĐÁNH GIÁ NHÂN SỰ - DANH SÁCH NHÂN VIÊN CẦN THẨM ĐỊNH</h3>
 <% if @evaluations.present? %>
   <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
+    <div class="col-md-1 border-right">Mã nhân viên</div>
     <div class="col-md-2 border-right">Họ tên</div>
     <div class="col-md-2 border-right">Trạng thái</div>
     <div class="col-md-3 border-right">Chức danh</div>
-    <div class="col-md-1 border-right">Mã nhân viên</div>
     <div class="col-md-2 border-right">Ngày vào công ty</div>
     <div class="col-md-2"></div>
   </div>
   <% @evaluations.each do |evaluation| %>
     <div class="row border-left border-right border-bottom" style="margin: 0px;">
+      <div class="col-md-1 text-center border-right padding-top"><%= evaluation.employee.employee_number %></div>
       <div class="col-md-2 border-right padding-top"><%= evaluation.employee.name %></div>
       <div class="col-md-2 border-right padding-top"><%= evaluation.status %></div>
       <div class="col-md-3 border-right padding-top"><%= evaluation.employee.position %></div>
-      <div class="col-md-1 text-center border-right padding-top"><%= evaluation.employee.employee_number %></div>
       <div class="col-md-2 text-center border-right padding-top"><%= evaluation.employee.registration_date %></div>
       <div class="col-md-2 text-center">
         <% if evaluation.status_before_type_cast >= 4 %>

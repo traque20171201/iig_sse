@@ -10,9 +10,9 @@ class AppraiserEvaluationService
   def run!
     evaluation = Evaluation.find(@request_params.id)
 
-    status = 5
+    status = 6
     if @request_params.save == 'Save' || @request_params.save == 'Hoàn thành'
-      status = 6
+      status = 7
     end
     total_appraiser_point = 0
     total_factor = 0
@@ -23,7 +23,8 @@ class AppraiserEvaluationService
       total_factor = total_factor + rec.factor
 
       evaluation_detail.update!(
-        appraiser_point: rec.appraiser_point
+        appraiser_point: rec.appraiser_point,
+        appraiser_comment: rec.appraiser_comment
       )
     end
 

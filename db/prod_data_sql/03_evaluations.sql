@@ -200,4 +200,5 @@ INSERT INTO evaluations(id,employee_id,manager_id,appraiser_id,status,year,achie
 (200,201,198,191,0,2020,null,null,null,null,null,null,null,null,null,null,null,now(),now()),
 (201,202,198,191,0,2020,null,null,null,null,null,null,null,null,null,null,null,now(),now()),
 (202,203,191,null,0,2020,null,null,null,null,null,null,null,null,null,null,null,now(),now()),
-(203,204,191,null,0,2020,null,null,null,null,null,null,null,null,null,null,null,now(),now())
+(203,204,191,null,0,2020,null,null,null,null,null,null,null,null,null,null,null,now(),now()),
+(204,164,145,144,0,2020,null,null,null,null,null,null,null,null,null,null,null,now(),now())

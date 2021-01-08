@@ -8,6 +8,6 @@ class GetEvaluationsForManagerService
   end
 
   def run!
-    @result = Evaluation.where(manager_id: @request_params.employee_id)
+    @result = Evaluation.includes(employee: [:department]).order("id ASC").where(manager_id: @request_params.employee_id)
   end
 end

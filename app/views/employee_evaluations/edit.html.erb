@@ -101,7 +101,7 @@
             </button>
           </h2>
         </div>
-        <div id="collapseB" class="collapse multi-collapse" aria-labelledby="headingB" data-parent="#accordionEvaluations">
+        <div id="collapseB" class="collapse multi-collapse show" aria-labelledby="headingB" data-parent="#accordionEvaluations">
           <div class="card-body">
             <div class="row header-background font-weight-bold text-center border">
               <div class="col-md-1 border-right">STT</div>
@@ -128,10 +128,10 @@
                   <% end %>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_point]" value="<%= evaluation_detail.employee_point %>" step="1.0" min="1.0" max="4.0" />
+                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_point]" value="<%= evaluation_detail.employee_point %>" step="1.0" min="1.0" max="4.0" required/>
                 </div>
                 <div class="col-md-5 padding-top">
-                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" rows="2" style="width:100%;"><%= evaluation_detail.employee_comment %></textarea>
+                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" rows="2" style="width:100%;" placeholder="Bắt buộc phải nhập 'Điểm tự đánh giá' và 'Diễn giải cụ thể'" required><%= evaluation_detail.employee_comment %></textarea>
                 </div>
               </div>
             <% end %>
@@ -153,16 +153,16 @@
             </button>
           </h2>
         </div>
-        <div id="collapseC" class="collapse multi-collapse" aria-labelledby="headingC" data-parent="#accordionEvaluations">
+        <div id="collapseC" class="collapse multi-collapse show" aria-labelledby="headingC" data-parent="#accordionEvaluations">
           <div class="card-body">
             <div class="row">
               <div class="col-md-12">
                 <span class="font-weight-bold">1. Định hướng phát triển trong thời gian tới (Là mục tiêu phát triển cần hoàn thành hay phấn đấu trong thời gian tới )</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <textarea name="achievements" rows="3" style="width:100%;"><%= @result[:evaluation].achievements %></textarea>
+                <textarea name="achievements" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].achievements %></textarea>
               </div>
             </div>
             <div class="row border-bottom">
@@ -170,9 +170,9 @@
                 <span class="font-weight-bold">2. Điểm tích cực cần phát huy</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <textarea name="positive_goals" rows="3" style="width:100%;"><%= @result[:evaluation].positive_goals %></textarea>
+                <textarea name="positive_goals" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].positive_goals %></textarea>
               </div>
             </div>
             <div class="row">
@@ -180,9 +180,9 @@
                 <span class="font-weight-bold">3. Điểm hạn chế cần sửa đổi</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <textarea name="negative_goals" rows="3" style="width:100%;"><%= @result[:evaluation].negative_goals %></textarea>
+                <textarea name="negative_goals" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].negative_goals %></textarea>
               </div>
             </div>
             <div class="row">
@@ -190,9 +190,9 @@
                 <span class="font-weight-bold">4. Sáng kiến/ Đề xuất / Kiến nghị / Đóng góp ý kiến</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <textarea name="overall_comments" rows="3" style="width:100%;"><%= @result[:evaluation].overall_comments %></textarea>
+                <textarea name="overall_comments" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].overall_comments %></textarea>
               </div>
             </div>
           </div>
@@ -270,7 +270,7 @@
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md border-right">
-                    <span>Điểm của CBQL trực tiếp đánh giá</span>
+                    <span>Điểm của CBQL 1</span>
                   </div>
                   <div class="col-md-2 border-right">
                     <span><%= @result[:evaluation].manager_point %></span>
@@ -284,7 +284,7 @@
                 </div>
                 <div class="row border-bottom">
                   <div class="col-md border-right">
-                    <span>Điểm của CBNV thẩm định 2</span>
+                    <span>Điểm của CBQL 2</span>
                   </div>
                   <div class="col-md-2 border-right">
                     <span><%= @result[:evaluation].appraiser_point %></span>

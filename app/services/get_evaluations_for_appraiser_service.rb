@@ -8,6 +8,6 @@ class GetEvaluationsForAppraiserService
   end
 
   def run!
-    @result = Evaluation.where(appraiser_id: @request_params.employee_id)
+    @result = Evaluation.includes(employee: [:department]).order("id ASC").where(appraiser_id: @request_params.employee_id)
   end
 end

@@ -5,7 +5,7 @@ class Evaluation < ApplicationRecord
   has_many :evaluation_details
 
   enum status: {'Nhân viên chưa đánh giá': 0, 'Nhân viên đang đánh giá': 1, 'Nhân viên hoàn thành đánh giá': 2, 'Quản lý trực tiếp đang đánh giá': 3,
-                'Quản lý trực tiếp hoàn thành đánh giá': 4, 'Quản lý thẩm định đang đánh giá': 5, 'Hoàn thành đánh giá': 6}
+                'Quản lý trực tiếp hoàn thành đánh giá': 4, 'Nhân viên phản hồi đánh giá': 5, 'Quản lý thẩm định đang đánh giá': 6, 'Hoàn thành đánh giá': 7}
 
   def get_is_agree
     return 'X' if is_agree
@@ -60,6 +60,7 @@ class Evaluation < ApplicationRecord
     return manager_point if appraiser_point.nil?
 
     avg_point = (manager_point + appraiser_point)/2
+    avg_point.round(1)
   end
 
   def get_avg_rank

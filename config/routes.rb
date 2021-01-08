@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get 'employee/evaluations/edit', to: 'employee_evaluations#edit'
     post 'employee/evaluations', to: 'employee_evaluations#save'
     get 'employee/evaluations', to: 'employee_evaluations#show'
+    get 'employee/evaluations/feedback', to: 'employee_evaluations#feedback'
+    post 'employee/evaluations/feedback', to: 'employee_evaluations#save_feedback'
     get 'manager/evaluations/list', to: 'manager_evaluations#list'
     get 'manager/evaluations/edit', to: 'manager_evaluations#edit'
     post 'manager/evaluations', to: 'manager_evaluations#save'
@@ -25,5 +27,7 @@ Rails.application.routes.draw do
     get 'guide', to: 'guide#index'
     get 'guide/employee', to: 'guide#employee'
     get 'guide/manager', to: 'guide#manager'
+    get 'admin/employees/list', to: 'admin#list_employees'
+    get 'admin/evaluations/list', to: 'admin#list_evaluations'
   end
 end

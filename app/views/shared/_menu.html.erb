@@ -12,6 +12,10 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
             <%= link_to t('evaluation'), employee_evaluations_edit_path, class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
+            <% if current_employee.feedback? %>
+              <%= link_to t('feedback'), employee_evaluations_feedback_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+            <% end %>
             <%= link_to t('result'), employee_evaluations_path, class: 'dropdown-item' %>
           </div>
         </li>
@@ -30,6 +34,18 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
               <%= link_to t('list_appraisers'), appraiser_evaluations_list_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+        <% end %>
+        <% if current_employee.admin? %>
+          <li class="nav-item dropdown <%= 'active' if controller_name=='admin' %>">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('admin') %>
+            </a>            
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+              <%= link_to t('list_evaluations'), admin_evaluations_list_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t('list_employees'), admin_employees_list_path, class: 'dropdown-item' %>
             </div>
           </li>
         <% end %>

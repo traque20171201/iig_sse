@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_111400) do
+ActiveRecord::Schema.define(version: 2021_01_07_213500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,11 @@ ActiveRecord::Schema.define(version: 2021_01_06_111400) do
     t.string "description", comment: "Mô tả"
     t.datetime "created_at", null: false, comment: "Ngày giờ tạo"
     t.datetime "updated_at", null: false, comment: "Ngày giờ cập nhật"
+    t.integer "result", comment: "Kế hoạch phát triển nhân sự"
+    t.string "achievements_manager"
+    t.string "positive_goals_manager", comment: "Điểm tích cực cần phát huy giành cho quản lý trực tiếp"
+    t.string "negative_goals_manager", comment: "Điểm hạn chế cần sửa đổi giành cho quản lý trực tiếp"
+    t.string "overall_comments_manager", comment: "Sáng kiến / Đề xuất / Kiến nghị / Đóng góp ý kiến giành cho quản lý trực tiếp"
   end
 
   create_table "master_evaluation_points", id: { comment: "ID" }, comment: "Evaluations", force: :cascade do |t|

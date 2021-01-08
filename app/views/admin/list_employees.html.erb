@@ -1,0 +1,29 @@
+<h3>DANH SÁCH NHÂN VIÊN</h3>
+<% if @employees.present? %>
+  <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
+    <div class="col-md-1 border-right">Mã nhân viên</div>
+    <div class="col-md-2 border-right">Họ tên</div>
+    <div class="col-md-2 border-right">Phòng ban</div>
+    <div class="col-md-3 border-right">Chức danh</div>
+    <div class="col-md-1 border-right">Chi nhánh</div>
+    <div class="col-md-2 border-right">Ngày vào công ty</div>
+    <div class="col-md-1"></div>
+  </div>
+  <% @employees.each do |employee| %>
+    <div class="row border-left border-right border-bottom" style="margin: 0px;">
+      <div class="col-md-1 text-center border-right padding-top"><%= employee.employee_number %></div>
+      <div class="col-md-2 border-right padding-top"><%= employee.name %></div>
+      <div class="col-md-2 border-right padding-top"><%= employee.department.name %></div>
+      <div class="col-md-3 border-right padding-top"><%= employee.position %></div>
+      <div class="col-md-1 border-right padding-top"><%= employee.branch %></div>
+      <div class="col-md-2 border-right padding-top"><%= employee.registration_date %></div>
+      <div class="col-md-1"></div>
+    </div>
+  <% end %>
+<% else %>
+<div class ="row">
+  <div class="col-md-12">
+    <span class="highlight">Không tìm thấy nhân viên.</span>
+  </div>
+</div>
+<% end %>
