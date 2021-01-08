@@ -28,6 +28,23 @@ class EmployeeEvaluationsController < ApplicationController
     @result = service.result
   end
 
+  def feedback
+    request_params = GetEvaluationRequestParams.new(current_employee.id)
+    request_params.validate!
+    service = GetEvaluationByEmployeeIdService.new(request_params)
+    service.run!
+    @result = service.result
+  end
+
+  def save_feedback
+    request_params = EmployeeEvaluationFeedbackRequestParams.new(params)
+    request_params.validate!
+    service = EmployeeEvaluationFeedbackService.new(request_params)
+    service.run!
+    flash[:notice] = service.result
+    redirect_to employee_evaluations_path
+  end
+
   private
 
   def check_permission

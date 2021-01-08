@@ -12,6 +12,10 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
             <%= link_to t('evaluation'), employee_evaluations_edit_path, class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
+            <% if current_employee.feedback? %>
+              <%= link_to t('feedback'), employee_evaluations_feedback_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+            <% end %>
             <%= link_to t('result'), employee_evaluations_path, class: 'dropdown-item' %>
           </div>
         </li>

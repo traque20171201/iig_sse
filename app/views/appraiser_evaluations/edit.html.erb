@@ -102,53 +102,70 @@
             </button>
           </h2>
         </div>
-        <div id="collapseB" class="collapse multi-collapse" aria-labelledby="headingB" data-parent="#accordionEvaluations">
+        <div id="collapseB" class="collapse multi-collapse show" aria-labelledby="headingB" data-parent="#accordionEvaluations">
           <div class="card-body">
             <div class="row header-background font-weight-bold text-center border">
-              <div class="col-md-1 border-right">STT</div>
-              <div class="col-md-3 border-right">Tiêu chí</div>
-              <div class="col-md-1 border-right">Trọng số</div>
+              <div class="col-md-3 border-right">
+                <div class="row">
+                  <div class="col-md-2 border-right">STT</div>
+                  <div class="col-md-7 border-right">Tiêu chí</div>
+                  <div class="col-md-3">Trọng số</div>
+                </div>
+              </div>
               <div class="col-md-1 border-right">Tự đánh giá</div>
               <div class="col-md-2 border-right">Diễn giải cụ thể</div>
               <div class="col-md-1 border-right">CBQL 1</div>
+              <div class="col-md-2 border-right">Diễn giải cụ thể</div>
+              <div class="col-md-1 border-right">CBQL 2</div>
               <div class="col-md-2">Diễn giải cụ thể</div>
-              <div class="col-md-1">CBQL 2</div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][id]" value="<%= evaluation_detail.id %>" />
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][factor]" value="<%= evaluation_detail.master_evaluation_point.factor %>" />
               <div class="row border-left border-right border-bottom">
-                <div class="col-md-1 text-center border-right padding-top">
-                  <span><%= evaluation_detail.evaluation_point_id %></span>
-                </div>
-                <div class="col-md-3 border-right padding-top" title="<%= evaluation_detail.master_evaluation_point.guide %>">
-                  <span><%= evaluation_detail.master_evaluation_point.name %></span>
-                </div>
-                <div class="col-md-1 text-center border-right padding-top">
-                  <% if @result[:employee].manager? %>
-                    <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100/2, precision: 1) %></span>
-                  <% else %>
-                    <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></span>
-                  <% end %>
+                <div class="col-md-3 border-right">
+                  <div class="row">              
+                    <div class="col-md-2 text-center border-right padding-top">
+                      <span><%= evaluation_detail.evaluation_point_id %></span>
+                    </div>
+                    <div class="col-md-7 border-right padding-top" title="<%= evaluation_detail.master_evaluation_point.guide %>">
+                      <span><%= evaluation_detail.master_evaluation_point.name %></span>
+                    </div>
+                    <div class="col-md-3 text-center padding-top">
+                      <% if @result[:employee].manager? %>
+                        <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100/2, precision: 1) %></span>
+                      <% else %>
+                        <span><%= number_to_percentage(evaluation_detail.master_evaluation_point.factor*100, precision: 0) %></span>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
                 <div class="col-md-2 border-right padding-top"><%= evaluation_detail.employee_comment %></div>
                 <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
                 <div class="col-md-2 border-right padding-top"><%= evaluation_detail.manager_comment %></div>
-                <div class="col-md-1 text-center padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" />
+                <div class="col-md-1 text-center border-right padding-top">
+                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" required />
+                </div>
+                <div class="col-md-2 padding-top">
+                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_comment]" rows="2" style="width:100%;" placeholder="Bắt buộc phải nhập" required><%= evaluation_detail.appraiser_comment %></textarea>
                 </div>
               </div>
             <% end %>
             <div class="row">
+              <div class="col-md-3 border-right">
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-7 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
+                  <div class="col-md-3 text-center padding-top"><span class="highlight">100%</span></div>
+                </div>
+              </div>
               <div class="col-md-1"></div>
-              <div class="col-md-3 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight">100%</span></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].employee_point %></span></div>
               <div class="col-md-2"></div>
               <div class="col-md-1"></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1"></div>
+              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
+              <div class="col-md-2"></div>
             </div>
           </div>
         </div>
@@ -163,14 +180,29 @@
         </div>
         <div id="collapseC" class="collapse multi-collapse" aria-labelledby="headingC" data-parent="#accordionEvaluations">
           <div class="card-body">
-            <div class="row">
+            <div class="row border-bottom">
               <div class="col-md-12">
                 <span class="font-weight-bold">1. Định hướng phát triển trong thời gian tới (Là mục tiêu phát triển cần hoàn thành hay phấn đấu trong thời gian tới )</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <span><%= @result[:evaluation].achievements %></span>
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của nhân viên</span>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của CBQL 1</span>
+                  </div>
+                </div>
+                <div class="row height-80">
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].achievements %></span>
+                  </div>
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].achievements_manager %></span>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="row border-bottom">
@@ -178,29 +210,74 @@
                 <span class="font-weight-bold">2. Điểm tích cực cần phát huy</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <span><%= @result[:evaluation].positive_goals %></span>
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của nhân viên</span>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của CBQL 1</span>
+                  </div>
+                </div>
+                <div class="row height-80">
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].positive_goals %></span>
+                  </div>
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].positive_goals_manager %></span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row border-bottom">
               <div class="col-md-12">
                 <span class="font-weight-bold">3. Điểm hạn chế cần sửa đổi</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <span><%= @result[:evaluation].negative_goals %></span>
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của nhân viên</span>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của CBQL 1</span>
+                  </div>
+                </div>
+                <div class="row height-80">
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].negative_goals %></span>
+                  </div>
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].negative_goals_manager %></span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row border-bottom">
               <div class="col-md-12">
                 <span class="font-weight-bold">4. Sáng kiến/ Đề xuất / Kiến nghị / Đóng góp ý kiến</span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <span><%= @result[:evaluation].overall_comments %></span>
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của nhân viên</span>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="font-weight-bold">Ý kiến của CBQL 1</span>
+                  </div>
+                </div>
+                <div class="row height-80">
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].overall_comments %></span>
+                  </div>
+                  <div class="col-md-6">
+                    <span><%= @result[:evaluation].overall_comments_manager %></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -375,6 +452,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 1 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Quy hoạch cán bộ nguồn</span>
@@ -384,6 +464,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 2 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Giữ nguyên vị trí hiện tại</span>
@@ -391,6 +474,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 3 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Đào tạo để phù hợp với vị trí hiện tại</span>
@@ -398,6 +484,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 4 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Thay đổi vị trí công việc</span>
@@ -405,6 +494,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 5 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Không ký hợp đồng</span>

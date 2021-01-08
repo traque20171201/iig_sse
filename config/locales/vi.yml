@@ -63,6 +63,7 @@ vi:
   department: "Phòng ban"
   evaluation: "Đánh giá"
   result: "Kết quả"
+  feedback: "Phản hồi"
   list_evaluations: "Danh sách đánh giá"
   list_appraisers: "Danh sách thẩm định"
   list_employees: "Danh sách nhân viên"
