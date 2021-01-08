@@ -10,7 +10,7 @@ class Evaluation < ApplicationRecord
                 'Quản lý trực tiếp hoàn thành đánh giá': 4, 'Nhân viên phản hồi đánh giá': 5, 'Quản lý thẩm định đang đánh giá': 6, 'Hoàn thành đánh giá': 7}
 
   scope :where_by_status, ->(status) { where(status: status) if status.present? }
-  scope :where_by_department_id, ->(department_id) { where('employee_id IN ', Employee.where(department_id: department_id).collect(&:id)) if department_id.present? }
+  scope :where_by_department_id, ->(department_id) { where('employee_id IN (?)', Employee.where(department_id: department_id).collect(&:id)) if department_id.present? }
 
   def get_is_agree
     return 'X' if is_agree

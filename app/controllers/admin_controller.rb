@@ -4,17 +4,22 @@ class AdminController < ApplicationController
   before_action :check_permission_before
 
   def list_employees
-    @employees = Employee.includes(:department).order("registration_date ASC").page params[:page]
+    @department_id = params[:department]
+    @departments = Department.all
+
+    @employees = Employee.includes(:department)
+                          .where_by_department_id(params[:department])
+                          .order("registration_date ASC").page params[:page]
   end
 
   def list_evaluations
     @status = params[:status]
-    @department = params[:department]
+    @department_id = params[:department]
     @departments = Department.all
 
     @evaluations = Evaluation.includes(employee: [:department])
                             .where_by_status(params[:status])
-                            # .where_by_department_id(params[:department])
+                            .where_by_department_id(params[:department])
                             .order("status, id ASC").page params[:page]
   end
 

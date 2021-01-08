@@ -1,4 +1,16 @@
 <h3>DANH SÁCH NHÂN VIÊN</h3>
+<%= form_with url: "/admin/employees/list", method: :get do |form| %>
+  <div class="row margin-bottom">
+    <div class="col-md-4">
+      <%= form.select :department, @departments.collect { |department| [department.name, department.id] }.unshift(['Phòng ban', '']),
+          { :selected => @department_id }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-right">
+      <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
+    </div>
+  </div>
+<% end %>
 <% if @employees.present? %>
   <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
     <div class="col-md-1 border-right">Mã nhân viên</div>

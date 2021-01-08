@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-4">
       <%= form.select :department, @departments.collect { |department| [department.name, department.id] }.unshift(['Phòng ban', '']),
-          { :selected => @department }, { class: "form-control" } %>
+          { :selected => @department_id }, { class: "form-control" } %>
     </div>
     <div class="col-md-4 text-right">
       <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
