@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Employee < ApplicationRecord
+  paginates_per 20
+
   belongs_to :department
   has_many :evaluations
 
