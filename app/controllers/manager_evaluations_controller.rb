@@ -20,8 +20,8 @@ class ManagerEvaluationsController < ApplicationController
     end
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    if service.result[:evaluation].status_before_type_cast >= 4
-      flash[:alert] = 'Đã hoàn thành đánh giá. Không thể thực hiện đánh giá lại nữa.'
+    if service.result[:evaluation].status_before_type_cast >= 5
+      flash[:alert] = 'Nhân viên đã phản hồi đánh giá. Không thể chỉnh sửa đánh giá được nữa.'
       redirect_to manager_evaluations_path(employee_id: request_params.employee_id)
     else
       @result = service.result
