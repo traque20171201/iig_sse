@@ -8,7 +8,12 @@ class EmployeeEvaluationsController < ApplicationController
     request_params.validate!
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    @result = service.result
+    if service.result[:evaluation].status_before_type_cast >= 4
+      flash[:alert] = 'Cán bộ quản lý đã hoàn thành đánh giá. Không thể thay đổi đánh giá được nữa.'
+      redirect_to employee_evaluations_path
+    else
+      @result = service.result
+    end
   end
 
   def save
@@ -33,7 +38,13 @@ class EmployeeEvaluationsController < ApplicationController
     request_params.validate!
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    @result = service.result
+    status = service.result[:evaluation].status_before_type_cast
+    if status >= 4 && status <= 6
+      @result = service.result
+    else
+      flash[:alert] = 'Cán bộ quản lý chưa hoàn thành đánh giá nên chưa thể thực hiện phản hồi đánh giá.'
+      redirect_to employee_evaluations_path
+    end
   end
 
   def save_feedback

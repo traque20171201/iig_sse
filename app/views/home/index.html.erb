@@ -1,5 +1,6 @@
 <% if current_employee %>
   <p><%= t('login.success', username: current_employee.name) %></p>
+  <span>Hãy click vào mục </span><span class="font-weight-bold">Hướng dẫn</span> > <span class="font-weight-bold">Hướng dẫn sử dụng hệ thống</span><span> để được hướng dẫn thao tác thực hiện.</span>
 <% else %>
   <h3><%= t('welcome') %></h3>
   <%= link_to  t('signin'), new_employee_session_path, class: 'btn btn-large btn-success' %>
