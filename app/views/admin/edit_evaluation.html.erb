@@ -24,7 +24,7 @@
       <div class="row margin-bottom">
         <div class="col-md-2 padding-top"><span class="font-weight-bold">Cán bộ quản lý đánh giá 1</span></div>
         <div class="col-md-3">
-          <%= form.select :manager_id, @managers.collect { |manager| [manager.name, manager.id].unshift(['Không có', '']) }, 
+          <%= form.select :manager_id, @managers.collect { |manager| [manager.name, manager.id] }.unshift(['Không có', '']), 
                 { :selected => @manager_id }, { class: "form-control" } %>
         </div>
         <div class="col-md-7"></div>
@@ -32,7 +32,7 @@
       <div class="row margin-bottom">
         <div class="col-md-2 padding-top"><span class="font-weight-bold">Cán bộ quản lý đánh giá 2</span></div>
         <div class="col-md-3">
-          <%= form.select :appraiser_id, @managers.collect { |manager| [manager.name, manager.id].unshift(['Không có', '']) }, 
+          <%= form.select :appraiser_id, @managers.collect { |manager| [manager.name, manager.id] }.unshift(['Không có', '']), 
                 { :selected => @appraiser_id }, { class: "form-control" } %>
         </div>
         <div class="col-md-7"></div>
