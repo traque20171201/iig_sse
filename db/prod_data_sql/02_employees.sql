@@ -204,5 +204,5 @@ INSERT INTO employees(id,employee_number,name,phone,email,encrypted_password,gen
 (203,'DN0015','Nguyễn Thị Lan Anh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'7/21/1982','8/21/2019','Chuyên viên kinh doanh','Đà Nẵng',0,20,now(),now()),
 (204,'DN0006','Ngô Thị Hồng Duyên',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/19/1985','7/4/2016','Nhân viên kinh doanh','Đà Nẵng',0,20,now(),now()),
 (205,'HN0363','Nguyễn Tuyết Minh',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'11/19/1980','9/21/2020','Phó Chánh Văn Phòng','Hà Nội',1,4,now(),now()),
-(206,'HN0363','Đoàn Hồng Nam',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/7/1965','2/1/2002','Tổng Giám đốc, Chủ tịch HĐQT','Hà Nội',3,1,now(),now()),
+(206,'HN0002','Đoàn Hồng Nam',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'10/7/1965','2/1/2002','Tổng Giám đốc, Chủ tịch HĐQT','Hà Nội',3,1,now(),now()),
 (207,'VN9999','Admin',null,null,'$2a$11$tDzf6sfGMaIKLDsasU9P1eLiSm/DZ5heyiMbWFIVBWEG6zKB.JfBi',null,'01/01/1900','01/01/2000','Administrator','Hà Nội',9,1,now(),now())
