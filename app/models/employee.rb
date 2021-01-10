@@ -45,7 +45,9 @@ class Employee < ApplicationRecord
   def feedback?
     evaluation = Evaluation.find_by(:employee_id => id)
 
-    return true if evaluation.status_before_type_cast >= 4 && evaluation.status_before_type_cast <= 6
+    return false if evaluation.blank?
+
+    return true if evaluation&.status_before_type_cast >= 4 && evaluation&.status_before_type_cast <= 6
 
     return false
   end
