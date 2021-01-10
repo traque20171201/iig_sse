@@ -42,10 +42,10 @@ INSERT INTO master_evaluation_points(id,"name","order",factor,is_manager,guide,c
 2. Có ý thức về việc tiết kiệm (tài sản, công cụ dụng cụ, điện nước…), giữ gìn vệ sinh văn phòng , vẫn cần sự nhắc nhở
 3. Chủ động thực hiện tốt việc tiết kiệm (tài sản, công cụ dụng cụ, điện nước…) và giữ gìn vệ sinh chung
 4. Luôn nêu gương hoặc chủ động nhắc nhở người khác trong việc tiết kiệm, giữ gìn vệ sinh chung cho Công ty',now(),now()),
-(10,'CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY',10,0.05,false,'1. Vi phạm ở mức độ cảnh cáo bằng văn bản trở lên hoặc có từ 5 lần vi phạm bị phạt tiền trở lên
-2. Chỉ bị vi phạm ở mức độ nhắc nhở, khiển trách hoặc có từ 5 lần vi phạm vị phạt tiền trở xuống
-3. Không vi phạm nội quy, quy định của Công ty.
-4. Nghiêm túc thực hiện và tích cực trong việc góp ý, nhắc nhở đồng nghiệp thực hiện tốt nội quy, quy định',now(),now()),
+(10,'CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY',10,0.05,false,'1. Vi phạm ở mức độ cảnh cáo bằng văn bản trở lên hoặc có từ 3 lần vi phạm bị phạt tiền trở lên
+2. Chỉ bị vi phạm ở mức độ nhắc nhở hoặc có vi phạm bị phạt tiền đi muộn, nghỉ không lương, nghỉ đột xuất từ 3 trở xuống
+3. Không vi phạm đi muộn, nghỉ đột xuất, nghỉ không lương và các nội quy, quy định khác của Công ty.
+4. Không vi phạm đi muộn, nghỉ đột xuất, nghỉ không lương và các nội quy, quy định khác của Công ty, nhắc nhở người khác thực hiện nghiêm túc nội quym quy định của công ty',now(),now()),
 (11,'KỸ NĂNG LẬP KẾ HOẠCH',1,0.25,true,'1. Không có kế hoạch cụ thể hoặc kế hoạch không khả thi (không nộp được kế hoạch hoặc báo cáo thực hiện kế hoạch từ 2 lần trở lên)
 2. Có kế hoạch nhưng vẫn cần hướng dẫn và chỉ đạo của cấp trên để thực hiện. Có một số công việc phải xử lý gấp hoặc trễ deadline
 3. Thường xuyên lập kế hoạch công việc và bám sát mục tiêu, kế hoạch mang tính khả thi cao, ít điều chỉnh
