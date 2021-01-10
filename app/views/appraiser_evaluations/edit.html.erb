@@ -106,25 +106,37 @@
           <div class="card-body">
             <div class="row header-background font-weight-bold text-center border">
               <div class="col-md-3 border-right">
-                <div class="row">
+                <div class="row" style="height: 100%;">
                   <div class="col-md-2 border-right">STT</div>
                   <div class="col-md-7 border-right">Tiêu chí</div>
                   <div class="col-md-3">Trọng số</div>
                 </div>
               </div>
-              <div class="col-md-1 border-right">Tự đánh giá</div>
-              <div class="col-md-2 border-right">Diễn giải cụ thể</div>
-              <div class="col-md-1 border-right">CBQL 1</div>
-              <div class="col-md-2 border-right">Diễn giải cụ thể</div>
-              <div class="col-md-1 border-right" title="Điểm số từ 1 tới 4 và không đánh điểm lẻ">CBQL 2</div>
-              <div class="col-md-2">Diễn giải cụ thể</div>
+              <div class="col-md-3 border-right">
+                <div class="row" style="height: 100%;">
+                  <div class="col-md-3 border-right">Tự đánh giá</div>
+                  <div class="col-md-9">Diễn giải cụ thể</div>
+                </div>
+              </div>
+              <div class="col-md-3 border-right">
+                <div class="row" style="height: 100%;">
+                  <div class="col-md-3 border-right">CBQL 1</div>
+                  <div class="col-md-9">Diễn giải cụ thể</div>
+                </div>
+              </div>
+              <div class="col-md-3 border-right">
+                <div class="row" style="height: 100%;">
+                  <div class="col-md-3 border-right" title="Điểm số từ 1 tới 4 và không đánh điểm lẻ">CBQL 2</div>
+                  <div class="col-md-9">Diễn giải cụ thể</div>
+                </div>
+              </div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][id]" value="<%= evaluation_detail.id %>" />
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][factor]" value="<%= evaluation_detail.master_evaluation_point.factor %>" />
               <div class="row border-left border-right border-bottom">
                 <div class="col-md-3 border-right">
-                  <div class="row">              
+                  <div class="row" style="height: 100%;">              
                     <div class="col-md-2 text-center border-right padding-top">
                       <span><%= evaluation_detail.evaluation_point_id %></span>
                     </div>
@@ -140,32 +152,60 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
-                <div class="col-md-2 border-right padding-top"><%= evaluation_detail.employee_comment %></div>
-                <div class="col-md-1 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
-                <div class="col-md-2 border-right padding-top"><%= evaluation_detail.manager_comment %></div>
-                <div class="col-md-1 text-center border-right padding-top">
-                  <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" required title="Điểm số từ 1 tới 4 và không đánh điểm lẻ" />
+                <div class="col-md-3 border-right">
+                  <div class="row" style="height: 100%;">
+                    <div class="col-md-3 text-center border-right padding-top"><%= evaluation_detail.employee_point %></div>
+                    <div class="col-md-9 padding-top">
+                      <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= evaluation_detail.employee_comment %></textarea>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-2 padding-top">
-                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_comment]" rows="2" style="width:100%;" placeholder="Bắt buộc phải nhập" required><%= evaluation_detail.appraiser_comment %></textarea>
+                <div class="col-md-3 border-right">
+                  <div class="row" style="height: 100%;">
+                    <div class="col-md-3 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
+                    <div class="col-md-9 padding-top">
+                      <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= evaluation_detail.manager_comment %></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 border-right">
+                  <div class="row" style="height: 100%;">
+                    <div class="col-md-3 text-center border-right padding-top">
+                      <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_point]" value="<%= evaluation_detail.appraiser_point %>" step="1.0" min="1.0" max="5.0" required title="Điểm số từ 1 tới 4 và không đánh điểm lẻ" />
+                    </div>
+                    <div class="col-md-9 padding-top">
+                      <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][appraiser_comment]" rows="5" style="width:100%;" placeholder="Bắt buộc phải nhập" required><%= evaluation_detail.appraiser_comment %></textarea>
+                    </div>
+                  </div>
                 </div>
               </div>
             <% end %>
             <div class="row">
-              <div class="col-md-3 border-right">
+              <div class="col-md-3">
                 <div class="row">
                   <div class="col-md-2"></div>
                   <div class="col-md-7 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
                   <div class="col-md-3 text-center padding-top"><span class="highlight">100%</span></div>
                 </div>
               </div>
-              <div class="col-md-1"></div>
-              <div class="col-md-2"></div>
-              <div class="col-md-1"></div>
-              <div class="col-md-2"></div>
-              <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
-              <div class="col-md-2"></div>
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].employee_point %></span></div>
+                  <div class="col-md-9"></div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].manager_point %></span></div>
+                  <div class="col-md-9"></div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
+                  <div class="col-md-9"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -195,12 +235,12 @@
                     <span class="font-weight-bold">Ý kiến của CBQL 1</span>
                   </div>
                 </div>
-                <div class="row height-80">
+                <div class="row">
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].achievements %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].achievements %></textarea>
                   </div>
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].achievements_manager %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].achievements_manager %></textarea>
                   </div>
                 </div>
               </div>
@@ -220,12 +260,12 @@
                     <span class="font-weight-bold">Ý kiến của CBQL 1</span>
                   </div>
                 </div>
-                <div class="row height-80">
+                <div class="row">
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].positive_goals %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].positive_goals %></textarea>
                   </div>
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].positive_goals_manager %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].positive_goals_manager %></textarea>
                   </div>
                 </div>
               </div>
@@ -245,12 +285,12 @@
                     <span class="font-weight-bold">Ý kiến của CBQL 1</span>
                   </div>
                 </div>
-                <div class="row height-80">
+                <div class="row">
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].negative_goals %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].negative_goals %></textarea>
                   </div>
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].negative_goals_manager %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].negative_goals_manager %></textarea>
                   </div>
                 </div>
               </div>
@@ -270,12 +310,12 @@
                     <span class="font-weight-bold">Ý kiến của CBQL 1</span>
                   </div>
                 </div>
-                <div class="row height-80">
+                <div class="row">
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].overall_comments %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].overall_comments %></textarea>
                   </div>
                   <div class="col-md-6">
-                    <span><%= @result[:evaluation].overall_comments_manager %></span>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].overall_comments_manager %></textarea>
                   </div>
                 </div>
               </div>
@@ -314,9 +354,9 @@
                 <span class="highlight"><%= @result[:evaluation].get_not_agree %></span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <span><%= @result[:evaluation].employee_comments %></span>
+                <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].employee_comments %></textarea>
               </div>
             </div>
           </div>

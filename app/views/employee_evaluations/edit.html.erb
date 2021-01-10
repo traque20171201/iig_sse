@@ -105,10 +105,10 @@
           <div class="card-body">
             <div class="row header-background font-weight-bold text-center border">
               <div class="col-md-1 border-right">STT</div>
-              <div class="col-md-4 border-right">Tiêu chí</div>
+              <div class="col-md-3 border-right">Tiêu chí</div>
               <div class="col-md-1 border-right">Trọng số</div>
               <div class="col-md-1 border-right" title="Điểm số từ 1 tới 4 và không đánh điểm lẻ">Tự đánh giá</div>
-              <div class="col-md-5">Diễn giải cụ thể</div>
+              <div class="col-md-6">Diễn giải cụ thể</div>
             </div>
             <% @result[:evaluation].evaluation_details.each do |evaluation_detail| %>
               <input type="hidden" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][id]" value="<%= evaluation_detail.id %>" />
@@ -117,7 +117,7 @@
                 <div class="col-md-1 text-center border-right padding-top">
                   <span><%= evaluation_detail.evaluation_point_id %></span>
                 </div>
-                <div class="col-md-4 border-right padding-top" title="<%= evaluation_detail.master_evaluation_point.guide %>">
+                <div class="col-md-3 border-right padding-top" title="<%= evaluation_detail.master_evaluation_point.guide %>">
                   <span><%= evaluation_detail.master_evaluation_point.name %></span>
                 </div>
                 <div class="col-md-1 text-center border-right padding-top">
@@ -130,17 +130,17 @@
                 <div class="col-md-1 text-center border-right padding-top">
                   <input type="number" name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_point]" value="<%= evaluation_detail.employee_point %>" step="1.0" min="1.0" max="4.0" required title="Điểm số từ 1 tới 4 và không đánh điểm lẻ"/>
                 </div>
-                <div class="col-md-5 padding-top">
-                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" rows="2" style="width:100%;" placeholder="Bắt buộc phải nhập 'Điểm tự đánh giá' và 'Diễn giải cụ thể'" required><%= evaluation_detail.employee_comment %></textarea>
+                <div class="col-md-6 padding-top">
+                  <textarea name="[evaluation_details][<%= evaluation_detail.evaluation_point_id %>][employee_comment]" rows="5" style="width:100%;" placeholder="Bắt buộc phải nhập 'Điểm tự đánh giá' và 'Diễn giải cụ thể'" required><%= evaluation_detail.employee_comment %></textarea>
                 </div>
               </div>
             <% end %>
             <div class="row">
               <div class="col-md-1"></div>
-              <div class="col-md-4 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
+              <div class="col-md-3 padding-top"><span class="highlight">TỔNG ĐIỂM</span></div>
               <div class="col-md-1 text-center padding-top"><span class="highlight">100%</span></div>
               <div class="col-md-1 text-center padding-top"><span class="highlight"><%= @result[:evaluation].employee_point %></span></div>
-              <div class="col-md-5"></div>
+              <div class="col-md-6"></div>
             </div>
           </div>
         </div>
@@ -162,7 +162,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <textarea name="achievements" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].achievements %></textarea>
+                <textarea name="achievements" rows="5" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].achievements %></textarea>
               </div>
             </div>
             <div class="row border-bottom">
@@ -172,7 +172,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <textarea name="positive_goals" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].positive_goals %></textarea>
+                <textarea name="positive_goals" rows="5" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].positive_goals %></textarea>
               </div>
             </div>
             <div class="row">
@@ -182,7 +182,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <textarea name="negative_goals" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].negative_goals %></textarea>
+                <textarea name="negative_goals" rows="5" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].negative_goals %></textarea>
               </div>
             </div>
             <div class="row">
@@ -192,7 +192,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <textarea name="overall_comments" rows="3" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].overall_comments %></textarea>
+                <textarea name="overall_comments" rows="5" style="width:100%;" placeholder="Ý kiến của nhân viên (bắt buộc phải nhập)" required><%= @result[:evaluation].overall_comments %></textarea>
               </div>
             </div>
           </div>
@@ -229,9 +229,9 @@
                 <span class="highlight"><%= @result[:evaluation].get_not_agree %></span>
               </div>
             </div>
-            <div class="row height-80">
+            <div class="row">
               <div class="col-md-12">
-                <span><%= @result[:evaluation].employee_comments %></span>
+                <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].employee_comments %></textarea>
               </div>
             </div>
           </div>
