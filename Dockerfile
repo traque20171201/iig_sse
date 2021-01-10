@@ -1,6 +1,6 @@
 FROM ruby:2.7.2
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-ENV TZ=Asia/Tokyo LANG=C.UTF-8
+ENV TZ=Asia/Ho_Chi_Minh LANG=C.UTF-8
 
 RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.7.0/migrate.linux-amd64.tar.gz | tar xvz
 RUN cp migrate.linux-amd64 /usr/local/bin/migrate
