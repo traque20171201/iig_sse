@@ -8,11 +8,15 @@ class EmployeeEvaluationsController < ApplicationController
     request_params.validate!
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    if service.result[:evaluation].status_before_type_cast >= 4
+    @result = service.result
+
+    return @result if @result[:evaluation].blank?
+
+    if service.result[:evaluation]&.status_before_type_cast >= 4
       flash[:alert] = 'Cán bộ quản lý đã hoàn thành đánh giá. Không thể thay đổi đánh giá được nữa.'
       redirect_to employee_evaluations_path
     else
-      @result = service.result
+      @result
     end
   end
 
