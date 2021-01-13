@@ -69,14 +69,17 @@ vi:
   list_appraisers: "Danh sách thẩm định"
   list_employees: "Danh sách nhân viên"
   edit_evaluation: "Chỉnh sửa đánh giá"
+  change_role: "Thay đổi quyền hạn"
   draff: "Lưu tạm"
   save: "Hoàn thành"
   search: "Tìm kiếm"
+  close: "Đóng"
   password: "Mật khẩu"
   changePassword: "Thay đổi mật khẩu"
   password_confirmation: "Xác nhận mật khẩu"
   current_password: "Mật khẩu hiện tại"
   reset_password_success: "Khôi phục mật khẩu thành công cho nhân viên %{username}"
+  change_role_success: "Thay đổi quyền hạn thành công cho nhân viên %{username}"
   helpers:
     submit:
       create: "Tạo Mới"
@@ -91,6 +94,12 @@ vi:
           employee: "Nhân viên"
           manager: "Quản lý"
           admin: "Giám đốc"
+        roles:
+          employee: "Nhân viên"
+          manager: "Quản lý"
+          ceo: "Giám đốc"
+          chairman: "Chủ tịch"
+          admin: "Admin"
         password: "Mật khẩu"
         current_password: "Mật khẩu hiện tại"
     errors:
