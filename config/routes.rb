@@ -32,5 +32,6 @@ Rails.application.routes.draw do
     post 'admin/password/reset', to: 'admin#reset_password'
     get 'admin/evaluations/edit', to: 'admin#edit_evaluation'
     post 'admin/evaluations/edit', to: 'admin#save_evaluation'
+    post 'admin/employees/change_role', to: 'admin#change_role'
   end
 end

@@ -2,6 +2,7 @@
 
 class AdminController < ApplicationController
   before_action :check_permission_before
+  skip_before_action :verify_authenticity_token, only:[:change_role]
 
   def list_employees
     @department_id = params[:department]
@@ -51,6 +52,19 @@ class AdminController < ApplicationController
     flash[:notice] = t('reset_password_success', username: employee.name)
     redirect_to admin_employees_list_path
   end
+
+  def change_role
+    employee = Employee.find(params[:employee_id])
+
+    employee.update!(
+      role: params[:role].to_i
+    )
+
+    flash[:notice] = t('change_role_success', username: employee.name)
+    redirect_to admin_employees_list_path
+  end
+
+  private 
 
   def check_permission_before
     if current_employee.nil?

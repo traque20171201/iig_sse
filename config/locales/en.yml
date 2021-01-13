@@ -69,14 +69,17 @@ en:
   list_appraisers: "List Appraisers"
   list_employees: "List Employees"
   edit_evaluation: "Edit Evaluation"
+  change_role: "Change Role"
   draff: "Draff"
   save: "Save"
   search: "Search"
+  close: "Close"
   password: "Password"
   changePassword: "Change Password"
   password_confirmation: "Password Confirmation"
   current_password: "Current Password"
   reset_password_success: "Reset password success for %{username}"
+  change_role_success: "Change role success for %{username}"
   helpers:
     submit:
       create: "Create"
@@ -90,6 +93,12 @@ en:
         role:
           employee: "Employee"
           manager: "Manager"
+          admin: "Administrator"
+        roles:
+          employee: "Employee"
+          manager: "Manager"
+          ceo: "Ceo"
+          chairman: "Chairman"
           admin: "Administrator"
         password: "Password"
         current_password: "Current Password"
