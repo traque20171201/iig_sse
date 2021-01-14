@@ -49,8 +49,8 @@ console:
 reset: db-drop-create db-migrate-up
 
 db-drop-create:
-	docker-compose run --rm app ./bin/rails db:environment:set RAILS_ENV=production
-	docker-compose run --rm -e RAILS_ENV=production app bundle exec rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1 db:create
+	# docker-compose run --rm app ./bin/rails db:environment:set RAILS_ENV=production
+	# docker-compose run --rm -e RAILS_ENV=production app bundle exec rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1 db:create
 
 debug:
 	rm -rf tmp/pids/server.pid
