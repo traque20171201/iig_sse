@@ -61,7 +61,7 @@
         </div>
         <div class="modal-body">
           <%= form_with url: "/admin/employees/change_role", method: :post, html: { id: 'form_change_role', name: 'form_change_role'} do |form_role| %>
-            <input type="hidden" name="employee_id" value="" />
+            <input type="hidden" id="employee_id" name="employee_id" value="" />
             <div class="form-group">
               <label for="role" class="col-form-label">Quyền hạn:</label>
               <select id="role" name="role" class="form-control">
