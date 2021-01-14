@@ -76,7 +76,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal"><%= t('close') %></button>
-          <button type="button" class="btn btn-primary" onclick="$('#form_change_role').submit();"><%= t('save') %></button>
+          <button type="button" class="btn btn-primary" onclick="document.getElementById('form_change_role').submit();"><%= t('save') %></button>
         </div>
       </div>
     </div>
@@ -90,8 +90,8 @@
 <% end %>
 <script type="text/javascript">
   function set_data(id, role, name) {
-    $('.modal-body').find('input').val(id);
-    $('.modal-body').find('select').val(role);
-    $('.modal-title').text('Thay đổi quyền hạn cho nhân viên ' + name);
+    document.getElementById('employee_id').value = id;
+    document.getElementById('role').value = role;
+    document.getElementById('changeRoleModalLabel').textContent = 'Thay đổi quyền hạn cho nhân viên ' + name;
   }
 </script>
