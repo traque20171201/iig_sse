@@ -64,6 +64,14 @@ class AdminController < ApplicationController
     redirect_to admin_employees_list_path
   end
 
+  def show_evaluation
+    request_params = GetEvaluationRequestParams.new(params[:employee_id])
+    # request_params.validate!
+    service = GetEvaluationByEmployeeIdService.new(request_params)
+    service.run!
+    @result = service.result
+  end
+
   private 
 
   def check_permission_before

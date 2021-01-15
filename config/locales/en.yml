@@ -69,6 +69,7 @@ en:
   list_appraisers: "List Appraisers"
   list_employees: "List Employees"
   edit_evaluation: "Edit Evaluation"
+  show_evaluation: "Show Evaluation"
   change_role: "Change Role"
   draff: "Draff"
   save: "Save"

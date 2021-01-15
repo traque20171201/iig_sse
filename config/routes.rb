@@ -33,5 +33,6 @@ Rails.application.routes.draw do
     get 'admin/evaluations/edit', to: 'admin#edit_evaluation'
     post 'admin/evaluations/edit', to: 'admin#save_evaluation'
     post 'admin/employees/change_role', to: 'admin#change_role'
+    get 'admin/evaluations/show', to: 'admin#show_evaluation'
   end
 end

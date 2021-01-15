@@ -16,7 +16,7 @@
       <div class="col-md-3 border-right padding-top"><%= evaluation.employee.position %></div>
       <div class="col-md-2 text-center border-right padding-top"><%= evaluation.employee.registration_date %></div>
       <div class="col-md-2 text-center">
-        <% if evaluation.status_before_type_cast >= 4 %>
+        <% if evaluation.status_before_type_cast >= 2 %>
           <%= link_to t('appraiser'), appraiser_evaluations_edit_path(:employee_id => evaluation.employee_id), class: 'btn btn-sm btn-primary margin-top' %>
         <% end %>
         <%= link_to t('result'), appraiser_evaluations_path(:employee_id => evaluation.employee_id), class: 'btn btn-sm btn-primary margin-top' %>

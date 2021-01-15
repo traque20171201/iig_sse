@@ -69,6 +69,7 @@ vi:
   list_appraisers: "Danh sách thẩm định"
   list_employees: "Danh sách nhân viên"
   edit_evaluation: "Chỉnh sửa đánh giá"
+  show_evaluation: "Hiển thị đánh giá"
   change_role: "Thay đổi quyền hạn"
   draff: "Lưu tạm"
   save: "Hoàn thành"
