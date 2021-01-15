@@ -464,6 +464,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 1 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Quy hoạch cán bộ nguồn</span>
@@ -473,6 +476,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 2 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Giữ nguyên vị trí hiện tại</span>
@@ -480,6 +486,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 3 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Đào tạo để phù hợp với vị trí hiện tại</span>
@@ -487,6 +496,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 4 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Thay đổi vị trí công việc</span>
@@ -494,6 +506,9 @@
             </div>
             <div class="row">
               <div class="col-md-1 border-left border-right border-bottom">
+                <% if @result[:evaluation].result == 5 %>
+                  <span class="highlight">X</span>
+                <% end %>
               </div>
               <div class="col-md-5 border-right border-bottom">
                 <span>Không ký hợp đồng</span>

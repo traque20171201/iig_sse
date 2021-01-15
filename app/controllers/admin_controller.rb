@@ -72,6 +72,15 @@ class AdminController < ApplicationController
     @result = service.result
   end
 
+  def result_evaluations
+    @department_id = params[:department]
+    @departments = Department.all
+
+    @evaluations = Evaluation.includes(employee: [:department])
+                            .where_by_department_id(params[:department])
+                            .order("status, id ASC").page params[:page]
+  end
+
   private 
 
   def check_permission_before

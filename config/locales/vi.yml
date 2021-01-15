@@ -70,6 +70,7 @@ vi:
   list_employees: "Danh sách nhân viên"
   edit_evaluation: "Chỉnh sửa đánh giá"
   show_evaluation: "Hiển thị đánh giá"
+  result_evaluations: "Kết quả đánh giá"
   change_role: "Thay đổi quyền hạn"
   draff: "Lưu tạm"
   save: "Hoàn thành"

@@ -70,6 +70,7 @@ en:
   list_employees: "List Employees"
   edit_evaluation: "Edit Evaluation"
   show_evaluation: "Show Evaluation"
+  result_evaluations: "Result Evaluations"
   change_role: "Change Role"
   draff: "Draff"
   save: "Save"

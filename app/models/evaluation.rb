@@ -81,4 +81,18 @@ class Evaluation < ApplicationRecord
 
     return 'D' if avg_point <= 1.8
   end
+
+  def get_result
+    return nil if result.nil?
+
+    return 'Quy hoạch cán bộ nguồn' if result == 1
+
+    return 'Giữ nguyên vị trí hiện tại' if result == 2
+
+    return 'Đào tạo để phù hợp với vị trí hiện tại' if result == 3
+
+    return 'Thay đổi vị trí công việc' if result == 4
+
+    return 'Không ký hợp đồng' if result == 5
+  end
 end
