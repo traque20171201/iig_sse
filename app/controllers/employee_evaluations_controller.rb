@@ -44,7 +44,7 @@ class EmployeeEvaluationsController < ApplicationController
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
     status = service.result[:evaluation].status_before_type_cast
-    if status >= 4 && status <= 6
+    if [4, 7].include?(status)
       @result = service.result
     else
       flash[:alert] = 'Cán bộ quản lý chưa hoàn thành đánh giá nên chưa thể thực hiện phản hồi đánh giá.'
@@ -71,7 +71,7 @@ class EmployeeEvaluationsController < ApplicationController
   end
 
   def check_over_date_evaluation
-    ignore_employees = [42, 164]
+    ignore_employees = [42, 138, 164]
     return if ignore_employees.include?(current_employee.id)
 
     flash[:alert] = 'Đã hết thời hạn đánh giá. Bạn không thể đánh giá hoặc chỉnh sửa.'

@@ -153,22 +153,26 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3 border-right">
-                <div class="row" style="height: 100%;">
-                  <div class="col-md-3 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
-                  <div class="col-md-9 padding-top">
-                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= evaluation_detail.manager_comment %></textarea>
+              <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                <div class="col-md-3 border-right">
+                  <div class="row" style="height: 100%;">
+                    <div class="col-md-3 text-center border-right padding-top"><%= evaluation_detail.manager_point %></div>
+                    <div class="col-md-9 padding-top">
+                      <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= evaluation_detail.manager_comment %></textarea>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 border-right">
-                <div class="row" style="height: 100%;">
-                  <div class="col-md-3 text-center border-right padding-top"><%= evaluation_detail.appraiser_point %></div>
-                  <div class="col-md-9 text-center padding-top">
-                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= evaluation_detail.appraiser_comment %></textarea>
+                <div class="col-md-3 border-right">
+                  <div class="row" style="height: 100%;">
+                    <div class="col-md-3 text-center border-right padding-top"><%= evaluation_detail.appraiser_point %></div>
+                    <div class="col-md-9 text-center padding-top">
+                      <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= evaluation_detail.appraiser_comment %></textarea>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% else %>
+                <div class="col-md-6"></div>
+              <% end %>
             </div>
           <% end %>
           <div class="row">
@@ -185,18 +189,22 @@
                 <div class="col-md-9"></div>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="row">
-                <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].manager_point %></span></div>
-                <div class="col-md-9"></div>
+            <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].manager_point %></span></div>
+                  <div class="col-md-9"></div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="row">
-                <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
-                <div class="col-md-9"></div>
+              <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3 text-center padding-top"><span class="highlight"><%= @result[:evaluation].appraiser_point %></span></div>
+                  <div class="col-md-9"></div>
+                </div>
               </div>
-            </div>
+            <% else %>
+              <div class="col-md-6"></div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -231,7 +239,9 @@
                   <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].achievements %></textarea>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].achievements_manager %></textarea>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].achievements_manager %></textarea>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -256,7 +266,9 @@
                   <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].positive_goals %></textarea>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].positive_goals_manager %></textarea>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].positive_goals_manager %></textarea>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -281,7 +293,9 @@
                   <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].negative_goals %></textarea>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].negative_goals_manager %></textarea>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].negative_goals_manager %></textarea>
+                    <% end %>
                 </div>
               </div>
             </div>
@@ -306,7 +320,9 @@
                   <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].overall_comments %></textarea>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].overall_comments_manager %></textarea>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <textarea rows="5" style="width:100%; border: none; background-color: transparent;" disabled><%= @result[:evaluation].overall_comments_manager %></textarea>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -389,13 +405,17 @@
                   <span>Điểm của CBQL 1</span>
                 </div>
                 <div class="col-md-2 border-right">
-                  <span><%= @result[:evaluation].manager_point %></span>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <span><%= @result[:evaluation].manager_point %></span>
+                  <% end %>
                 </div>
                 <div class="col-md-3 border-right">
                   <span>Xếp loại đánh giá</span>
                 </div>
                 <div class="col-md-2">
-                  <span><%= @result[:evaluation].get_manager_rank %></span>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <span><%= @result[:evaluation].get_manager_rank %></span>
+                  <% end %>
                 </div>
               </div>
               <div class="row border-bottom">
@@ -403,13 +423,17 @@
                   <span>Điểm của CBQL 2</span>
                 </div>
                 <div class="col-md-2 border-right">
-                  <span><%= @result[:evaluation].appraiser_point %></span>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <span><%= @result[:evaluation].appraiser_point %></span>
+                  <% end %>
                 </div>
                 <div class="col-md-3 border-right">
                   <span>Xếp loại đánh giá</span>
                 </div>
                 <div class="col-md-2">
-                  <span><%= @result[:evaluation].get_appraiser_rank %></span>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <span><%= @result[:evaluation].get_appraiser_rank %></span>
+                  <% end %>
                 </div>
               </div>
               <div class="row lemon-background">
@@ -417,13 +441,17 @@
                   <span>TRUNG BÌNH</span>
                 </div>
                 <div class="col-md-2 border-right">
-                  <span><%= @result[:evaluation].get_avg %></span>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <span><%= @result[:evaluation].get_avg %></span>
+                  <% end %>
                 </div>
                 <div class="col-md-3 border-right">
                   <span>Xếp loại đánh giá</span>
                 </div>
                 <div class="col-md-2">
-                  <span><%= @result[:evaluation].get_avg_rank %></span>
+                  <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                    <span><%= @result[:evaluation].get_avg_rank %></span>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -483,8 +511,10 @@
           </div>
           <div class="row">
             <div class="col-md-1 border-left border-right border-bottom">
-              <% if @result[:evaluation].result == 1 %>
-                <span class="highlight">X</span>
+              <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                <% if @result[:evaluation].result == 1 %>
+                  <span class="highlight">X</span>
+                <% end %>
               <% end %>
             </div>
             <div class="col-md-5 border-right border-bottom">
@@ -495,8 +525,10 @@
           </div>
           <div class="row">
             <div class="col-md-1 border-left border-right border-bottom">
-              <% if @result[:evaluation].result == 2 %>
-                <span class="highlight">X</span>
+              <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                <% if @result[:evaluation].result == 2 %>
+                  <span class="highlight">X</span>
+                <% end %>
               <% end %>
             </div>
             <div class="col-md-5 border-right border-bottom">
@@ -505,8 +537,10 @@
           </div>
           <div class="row">
             <div class="col-md-1 border-left border-right border-bottom">
-              <% if @result[:evaluation].result == 3 %>
-                <span class="highlight">X</span>
+              <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                <% if @result[:evaluation].result == 3 %>
+                  <span class="highlight">X</span>
+                <% end %>
               <% end %>
             </div>
             <div class="col-md-5 border-right border-bottom">
@@ -515,8 +549,10 @@
           </div>
           <div class="row">
             <div class="col-md-1 border-left border-right border-bottom">
-              <% if @result[:evaluation].result == 4 %>
-                <span class="highlight">X</span>
+              <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                <% if @result[:evaluation].result == 4 %>
+                  <span class="highlight">X</span>
+                <% end %>
               <% end %>
             </div>
             <div class="col-md-5 border-right border-bottom">
@@ -525,8 +561,10 @@
           </div>
           <div class="row">
             <div class="col-md-1 border-left border-right border-bottom">
-              <% if @result[:evaluation].result == 5 %>
-                <span class="highlight">X</span>
+              <% if [4, 5, 7].include?(@result[:evaluation].status_before_type_cast) %>
+                <% if @result[:evaluation].result == 5 %>
+                  <span class="highlight">X</span>
+                <% end %>
               <% end %>
             </div>
             <div class="col-md-5 border-right border-bottom">

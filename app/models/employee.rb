@@ -47,7 +47,7 @@ class Employee < ApplicationRecord
 
     return false if evaluation.blank?
 
-    return true if evaluation&.status_before_type_cast >= 4 && evaluation&.status_before_type_cast <= 6
+    return true if [4, 7].include?(evaluation&.status_before_type_cast)
 
     return false
   end
