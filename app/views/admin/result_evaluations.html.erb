@@ -8,24 +8,35 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 text-right">
       <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
+      <%= link_to t('download'), admin_evaluations_export_path(:format => :xlsx), class: 'btn btn-large btn-primary' %>
     </div>
   </div>
 <% end %>
 <% if @evaluations.present? %>
   <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
-    <div class="col-md-2 border-right">Họ tên</div>
+    <div class="col-md-3 border-right">
+      <div class="row" style="height: 100%">
+        <div class="col-md-2 border-right">STT</div>
+        <div class="col-md-10">Họ tên</div>
+      </div>
+    </div>
     <div class="col-md-2 border-right">Phòng ban</div>
     <div class="col-md-2 border-right">Chức danh</div>
-    <div class="col-md-2 border-right">Điểm</div>
+    <div class="col-md-1 border-right">Điểm</div>
     <div class="col-md-2 border-right">Xếp loại</div>
     <div class="col-md-2 border-right">Quy hoạch cán bộ</div>
   </div>
-  <% @evaluations.each do |evaluation| %>
+  <% @evaluations.each.with_index(1) do |evaluation, index| %>
     <div class="row border-left border-right border-bottom" style="margin: 0px;">
-      <div class="col-md-2 border-right padding-top"><%= evaluation.employee.name %></div>
+      <div class="col-md-3 border-right">
+        <div class="row" style="height: 100%">
+          <div class="col-md-2 border-right padding-top text-center"><%= index %></div>
+          <div class="col-md-10 padding-top"><%= evaluation.employee.name %></div>
+        </div>
+      </div>
       <div class="col-md-2 border-right padding-top"><%= evaluation.employee.department.name %></div>
       <div class="col-md-2 border-right padding-top"><%= evaluation.employee.position %></div>
-      <div class="col-md-2 border-right padding-top text-center"><%= evaluation.get_avg %></div>
+      <div class="col-md-1 border-right padding-top text-center"><%= evaluation.get_avg %></div>
       <div class="col-md-2 border-right padding-top text-center"><%= evaluation.get_avg_rank %></div>
       <div class="col-md-2 border-right padding-top text-center"><%= evaluation.get_result %></div>
     </div>

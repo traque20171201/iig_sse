@@ -81,6 +81,17 @@ class AdminController < ApplicationController
                             .order("status, id ASC").page params[:page]
   end
 
+  def export_evaluations
+    @evaluations = Evaluation.includes(employee: [:department]).order("status, id ASC")
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="Danh sách kết quả đánh giá năm 2020.xlsx"'
+      }
+    end
+  end
+
   private 
 
   def check_permission_before
