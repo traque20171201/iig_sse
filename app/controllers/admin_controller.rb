@@ -81,6 +81,24 @@ class AdminController < ApplicationController
                             .order("status, id ASC").page params[:page]
   end
 
+  def export_evaluations
+    @department_id = params[:department]
+
+    @evaluations = Evaluation.includes(employee: [:department])
+                              .where_by_department_id(params[:department])
+                              .order("status, id ASC")
+
+    filename = "Danh sách kết quả đánh giá toàn bộ công ty năm 2020.xlsx"
+    filename = "Danh sách kết quả đánh giá phòng #{Department.find(params[:department]).name} năm 2020.xlsx" if params[:department].present?
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = "attachment; filename=#{filename}"
+      }
+    end
+  end
+
   private 
 
   def check_permission_before

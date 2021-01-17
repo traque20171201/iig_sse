@@ -65,3 +65,6 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 
 # Kaminari supports multiple ORMs
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+
+# Axlsx_Rails provides an Axlsx renderer so you can move all your spreadsheet code from your controller into view files.
+gem 'axlsx_rails', '~> 0.6.1'
