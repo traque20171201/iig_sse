@@ -92,6 +92,9 @@ class AdminController < ApplicationController
     end
   end
 
+  def report_evaluation
+  end
+
   private 
 
   def check_permission_before
