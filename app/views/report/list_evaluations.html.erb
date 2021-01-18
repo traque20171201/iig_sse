@@ -1,0 +1,55 @@
+<h3>DANH SÁCH ĐÁNH GIÁ NHÂN VIÊN</h3>
+<%= form_with url: "/report/evaluations/list", method: :get do |form| %>
+  <div class="row margin-bottom">
+    <div class="col-md-4">
+      <%= form.select :status, [['Trạng thái', ''], ['Nhân viên chưa đánh giá', 0], ['Nhân viên đang đánh giá', 1], ['Nhân viên hoàn thành đánh giá', 2], 
+                                ['Quản lý trực tiếp đang đánh giá', 3], ['Quản lý trực tiếp hoàn thành đánh giá', 4], ['Nhân viên phản hồi đánh giá', 5],
+                                ['Quản lý thẩm định đang đánh giá', 6], ['Hoàn thành đánh giá', 7]],
+          { :selected => @status }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-4">
+      <%= form.select :department, @departments.collect { |department| [department.name, department.id] }.unshift(['Phòng ban', '']),
+          { :selected => @department_id }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-4 text-right">
+      <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
+    </div>
+  </div>
+<% end %>
+<% if @evaluations.present? %>
+  <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
+    <div class="col-md-1 border-right">Mã nhân viên</div>
+    <div class="col-md-2 border-right">Họ tên</div>
+    <div class="col-md-2 border-right">Trạng thái</div>
+    <div class="col-md-2 border-right">Phòng ban</div>
+    <div class="col-md-2 border-right">Chức danh</div>
+    <div class="col-md-1 border-right">Chi nhánh</div>
+    <div class="col-md-2"></div>
+  </div>
+  <% @evaluations.each do |evaluation| %>
+    <div class="row border-left border-right border-bottom" style="margin: 0px;">
+      <div class="col-md-1 text-center border-right padding-top"><%= evaluation.employee.employee_number %></div>
+      <div class="col-md-2 border-right padding-top"><%= evaluation.employee.name %></div>
+      <div class="col-md-2 border-right padding-top"><%= evaluation.status %></div>
+      <div class="col-md-2 border-right padding-top"><%= evaluation.employee.department.name %></div>
+      <div class="col-md-2 border-right padding-top"><%= evaluation.employee.position %></div>
+      <div class="col-md-1 border-right padding-top"><%= evaluation.employee.branch %></div>
+      <div class="col-md-2">
+        <%= link_to t('show_evaluation'), report_evaluations_show_path(:employee_id => evaluation.employee.id), class: 'btn btn-sm btn-primary margin-top' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= paginate @evaluations %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+<% else %>
+<div class ="row text-center">
+  <div class="col-md-12">
+    <span class="highlight">Không tìm thấy danh sách đánh giá nhân viên.</span>
+  </div>
+</div>
+<% end %>

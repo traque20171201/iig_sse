@@ -37,6 +37,18 @@
             </div>
           </li>
         <% end %>
+        <% if current_employee.ceo? %>
+          <li class="nav-item dropdown <%= 'active' if controller_name=='report' %>">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= t('report') %>
+            </a>            
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownTransaction">
+              <%= link_to t('list_evaluations'), report_evaluations_list_path, class: 'dropdown-item' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to t('result_evaluations'), report_evaluations_result_path, class: 'dropdown-item' %>
+            </div>
+          </li>
+        <% end %>
         <% if current_employee.admin? %>
           <li class="nav-item dropdown <%= 'active' if controller_name=='admin' %>">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTransaction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

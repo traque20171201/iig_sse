@@ -49,6 +49,7 @@ vi:
   change_password: "Thay đổi mật khẩu"
   employee: "Nhân viên"
   manager: "Quản lý"
+  report: "Báo cáo"
   admin: "Quản trị viên"
   appraiser: "Thẩm định"
   employee_info: "Thông tin nhân viên"

@@ -36,5 +36,9 @@ Rails.application.routes.draw do
     get 'admin/evaluations/show', to: 'admin#show_evaluation'
     get 'admin/evaluations/result', to: 'admin#result_evaluations'
     get 'admin/evaluations/export', to: 'admin#export_evaluations'
+    get 'report/evaluations/list', to: 'report#list_evaluations'
+    get 'report/evaluations/show', to: 'report#show_evaluation'
+    get 'report/evaluations/result', to: 'report#result_evaluations'
+    get 'report/evaluations/export', to: 'report#export_evaluations'
   end
 end

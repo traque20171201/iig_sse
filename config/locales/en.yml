@@ -49,6 +49,7 @@ en:
   change_password: "Change Password"
   employee: "Employee"
   manager: "Manager"
+  report: "Report"
   admin: "Admin"
   appraiser: "Appraiser"
   employee_info: "Employee Infomation"

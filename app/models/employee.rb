@@ -42,6 +42,12 @@ class Employee < ApplicationRecord
     return false
   end
 
+  def ceo?
+    return true if role_before_type_cast >= 2
+
+    return false
+  end
+
   def feedback?
     evaluation = Evaluation.find_by(:employee_id => id)
 
