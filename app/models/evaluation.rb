@@ -7,7 +7,7 @@ class Evaluation < ApplicationRecord
   has_many :evaluation_details
 
   enum status: {'Nhân viên chưa đánh giá': 0, 'Nhân viên đang đánh giá': 1, 'Nhân viên hoàn thành đánh giá': 2, 'Quản lý trực tiếp đang đánh giá': 3,
-                'Quản lý trực tiếp hoàn thành đánh giá': 4, 'Nhân viên phản hồi đánh giá': 5, 'Quản lý thẩm định đang đánh giá': 6, 'Hoàn thành đánh giá': 7}
+                'Quản lý trực tiếp hoàn thành đánh giá': 4, 'Quản lý thẩm định đang đánh giá': 6, 'Quản lý thẩm định hoàn thành đánh giá': 7, 'Hoàn thành đánh giá': 5}
 
   scope :where_by_status, ->(status) { where(status: status) if status.present? }
   scope :where_by_department_id, ->(department_id) { where('employee_id IN (?)', Employee.where(department_id: department_id).collect(&:id)) if department_id.present? }

@@ -20,12 +20,13 @@ class AppraiserEvaluationsController < ApplicationController
     end
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    if service.result[:evaluation].status_before_type_cast >= 7
-      flash[:alert] = 'Đã hoàn thành thẩm định. Không thể thực hiện thẩm định lại nữa.'
-      redirect_to appraiser_evaluations_path(employee_id: request_params.employee_id)
-    else
-      @result = service.result
-    end
+    # if service.result[:evaluation].status_before_type_cast >= 7
+    #   flash[:alert] = 'Đã hoàn thành thẩm định. Không thể thực hiện thẩm định lại nữa.'
+    #   redirect_to appraiser_evaluations_path(employee_id: request_params.employee_id)
+    # else
+    #   @result = service.result
+    # end
+    @result = service.result
   end
 
   def save

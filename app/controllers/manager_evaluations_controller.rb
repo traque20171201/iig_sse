@@ -20,12 +20,13 @@ class ManagerEvaluationsController < ApplicationController
     end
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
-    if service.result[:evaluation].status_before_type_cast >= 7
-      flash[:alert] = 'Nhân viên đã phản hồi đánh giá. Không thể chỉnh sửa đánh giá được nữa.'
-      redirect_to manager_evaluations_path(employee_id: request_params.employee_id)
-    else
-      @result = service.result
-    end
+    # if service.result[:evaluation].status_before_type_cast >= 7
+    #   flash[:alert] = 'Nhân viên đã phản hồi đánh giá. Không thể chỉnh sửa đánh giá được nữa.'
+    #   redirect_to manager_evaluations_path(employee_id: request_params.employee_id)
+    # else
+    #   @result = service.result
+    # end
+    @result = service.result
   end
 
   def save
