@@ -73,10 +73,12 @@ class AdminController < ApplicationController
   end
 
   def result_evaluations
+    @status = params[:status]
     @department_id = params[:department]
     @departments = Department.all
 
     @evaluations = Evaluation.includes(employee: [:department])
+                            .where_by_status(params[:status])
                             .where_by_department_id(params[:department])
                             .order("status, id ASC").page params[:page]
   end
