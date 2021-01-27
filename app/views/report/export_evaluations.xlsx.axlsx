@@ -5,11 +5,11 @@ wb.styles do |style|
   border_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
 
   wb.add_worksheet(name: "Kết quả đánh giá") do |sheet|
-    sheet.add_row ["STT", "Họ tên", "Phòng ban", "Chức danh", "Trạng thái", "Điểm", "Xếp loại", "Phản hồi", "Quy hoạch cán bộ"],
-           style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+    sheet.add_row ["STT", "Mã nhân viên", "Họ tên", "Phòng ban", "Chức danh", "Trạng thái", "Điểm", "Xếp loại", "Phản hồi", "Quy hoạch cán bộ"],
+           style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
     @evaluations.each.with_index(1) do |evaluation, index|
-      sheet.add_row [index, evaluation.employee.name, evaluation.employee.department.name, evaluation.employee.position, evaluation.status, evaluation.get_avg, evaluation.get_avg_rank, evaluation.get_feedback, evaluation.get_result],
-             style: [textcenter_cell, border_cell, border_cell, border_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, border_cell]
+      sheet.add_row [index, evaluation.employee.employee_number, evaluation.employee.name, evaluation.employee.department.name, evaluation.employee.position, evaluation.status, evaluation.get_avg, evaluation.get_avg_rank, evaluation.get_feedback, evaluation.get_result],
+             style: [textcenter_cell, textcenter_cell, border_cell, border_cell, border_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, border_cell]
     end
   end
 end
