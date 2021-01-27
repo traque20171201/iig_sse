@@ -98,4 +98,12 @@ class Evaluation < ApplicationRecord
 
     return 'Không ký hợp đồng' if result == 5
   end
+
+  def get_feedback
+    return nil if is_agree.nil?
+
+    return 'Đồng ý' if is_agree
+
+    return 'Không đồng ý' if !is_agree
+  end
 end
