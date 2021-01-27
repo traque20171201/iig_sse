@@ -2,6 +2,7 @@
 
 class ManagerEvaluationsController < ApplicationController
   before_action :check_permission_before
+  before_action :check_over_date_evaluation, only:[:edit, :save]
 
   def list
     request_params = GetEvaluationRequestParams.new(current_employee.id)
@@ -70,6 +71,11 @@ class ManagerEvaluationsController < ApplicationController
         redirect_to root_path
       end
     end
+  end
+
+  def check_over_date_evaluation
+    flash[:alert] = 'Đã hết thời hạn đánh giá. Bạn không thể đánh giá hoặc chỉnh sửa.'
+    redirect_to manager_evaluations_list_path
   end
 end
   

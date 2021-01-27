@@ -11,6 +11,7 @@ class Evaluation < ApplicationRecord
 
   scope :where_by_status, ->(status) { where(status: status) if status.present? }
   scope :where_by_department_id, ->(department_id) { where('employee_id IN (?)', Employee.where(department_id: department_id).collect(&:id)) if department_id.present? }
+  scope :where_by_is_agree, ->(is_agree) { where(is_agree: is_agree) if is_agree.present? }
 
   def get_is_agree
     return 'X' if is_agree

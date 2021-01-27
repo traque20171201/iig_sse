@@ -1,15 +1,19 @@
 <h3>KẾT QUẢ ĐÁNH GIÁ NHÂN VIÊN</h3>
 <%= form_with url: "/admin/evaluations/result", method: :get do |form| %>
   <div class="row margin-bottom">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= form.select :department, @departments.collect { |department| [department.name, department.id] }.unshift(['Phòng ban', '']),
           { :selected => @department_id }, { class: "form-control" } %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <%= form.select :status, [['Trạng thái', ''], ['Nhân viên chưa đánh giá', 0], ['Nhân viên đang đánh giá', 1], ['Nhân viên hoàn thành đánh giá', 2], 
                                 ['Quản lý trực tiếp đang đánh giá', 3], ['Quản lý trực tiếp hoàn thành đánh giá', 4],
                                 ['Quản lý thẩm định đang đánh giá', 6], ['Quản lý thẩm định hoàn thành đánh giá', 7], ['Hoàn thành đánh giá', 5]],
           { :selected => @status }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-2">
+      <%= form.select :is_agree, [['Phản hồi', ''], ['Đồng ý', true], ['Không đồng ý', false]],
+          { :selected => @is_agree }, { class: "form-control" } %>
     </div>
     <div class="col-md-4 text-right">
       <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
@@ -19,38 +23,47 @@
 <% end %>
 <% if @evaluations.present? %>
   <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
-    <div class="col-md-3 border-right">
+    <div class="col-md-2 border-right">
       <div class="row" style="height: 100%">
-        <div class="col-md-2 border-right">STT</div>
-        <div class="col-md-10">Họ tên</div>
+        <div class="col-md-3 border-right">STT</div>
+        <div class="col-md-9">Họ tên</div>
       </div>
     </div>
     <div class="col-md-2 border-right">Phòng ban</div>
     <div class="col-md-2 border-right">Chức danh</div>
-    <div class="col-md-3 border-right">
+    <div class="col-md-4 border-right">
       <div class="row" style="height: 100%">
-        <div class="col-md-7 border-right">Trạng thái</div>
+        <div class="col-md-6 border-right">Trạng thái</div>
         <div class="col-md-2 border-right">Điểm</div>
-        <div class="col-md-3">Xếp loại</div>
+        <div class="col-md-2 border-right">Xếp loại</div>
+        <div class="col-md-2">Phản hồi</div>
       </div>
     </div>
     <div class="col-md-2 border-right">Quy hoạch cán bộ</div>
   </div>
   <% @evaluations.each.with_index(1) do |evaluation, index| %>
     <div class="row border-left border-right border-bottom" style="margin: 0px;">
-      <div class="col-md-3 border-right">
+      <div class="col-md-2 border-right">
         <div class="row" style="height: 100%">
-          <div class="col-md-2 border-right padding-top text-center"><%= index %></div>
-          <div class="col-md-10 padding-top"><%= evaluation.employee.name %></div>
+          <div class="col-md-3 border-right padding-top text-center"><%= index %></div>
+          <div class="col-md-9 padding-top"><%= evaluation.employee.name %></div>
         </div>
       </div>
       <div class="col-md-2 border-right padding-top"><%= evaluation.employee.department.name %></div>
       <div class="col-md-2 border-right padding-top"><%= evaluation.employee.position %></div>
-      <div class="col-md-3 border-right">
+      <div class="col-md-4 border-right">
         <div class="row" style="height: 100%">
-          <div class="col-md-7 border-right padding-top text-center"><%= evaluation.status %></div>
+          <div class="col-md-6 border-right padding-top text-center"><%= evaluation.status %></div>
           <div class="col-md-2 border-right padding-top text-center"><%= evaluation.get_avg %></div>
-          <div class="col-md-3 padding-top text-center"><%= evaluation.get_avg_rank %></div>
+          <div class="col-md-2 border-right padding-top text-center"><%= evaluation.get_avg_rank %></div>
+          <div class="col-md-2 padding-top text-center">
+            <% if evaluation.is_agree == true %>
+              <span class="feedback-icon agree-icon" title="Đồng ý"></span>
+            <% end %>
+            <% if evaluation.is_agree == false %>
+              <span class="feedback-icon disagree-icon" title="Không đồng ý"></span>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="col-md-2 border-right padding-top text-center"><%= evaluation.get_result %></div>

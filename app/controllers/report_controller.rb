@@ -24,11 +24,13 @@ class ReportController < ApplicationController
   def result_evaluations
     @status = params[:status]
     @department_id = params[:department]
+    @is_agree = params[:is_agree]
     @departments = Department.all
 
     @evaluations = Evaluation.includes(employee: [:department])
                             .where_by_status(params[:status])
                             .where_by_department_id(params[:department])
+                            .where_by_is_agree(params[:is_agree])
                             .order("status, id ASC").page params[:page]
   end
 
