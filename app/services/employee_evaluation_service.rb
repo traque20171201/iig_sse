@@ -32,7 +32,7 @@ class EmployeeEvaluationService
 
     evaluation.update!(
       status: status,
-      employee_point: employee_point.round(1),
+      employee_point: employee_point.ceil(1),
       achievements: @request_params.achievements,
       positive_goals: @request_params.positive_goals,
       negative_goals: @request_params.negative_goals,

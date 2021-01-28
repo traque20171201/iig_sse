@@ -32,7 +32,7 @@ class AppraiserEvaluationService
 
     evaluation.update!(
       status: status,
-      appraiser_point: appraiser_point.round(1)
+      appraiser_point: appraiser_point.ceil(1)
     )
 
     @result = 'Cập nhật dữ liệu thành công.'

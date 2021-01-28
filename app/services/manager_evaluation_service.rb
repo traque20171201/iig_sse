@@ -32,7 +32,7 @@ class ManagerEvaluationService
   
       evaluation.update!(
         status: status,
-        manager_point: manager_point.round(1),
+        manager_point: manager_point.ceil(1),
         achievements_manager: @request_params.achievements_manager,
         positive_goals_manager: @request_params.positive_goals_manager,
         negative_goals_manager: @request_params.negative_goals_manager,
