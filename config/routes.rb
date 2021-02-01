@@ -40,5 +40,7 @@ Rails.application.routes.draw do
     get 'report/evaluations/show', to: 'report#show_evaluation'
     get 'report/evaluations/result', to: 'report#result_evaluations'
     get 'report/evaluations/export', to: 'report#export_evaluations'
+    get 'report/evaluations/result/details', to: 'report#result_evaluations_details'
+    get 'report/evaluations/export/details', to: 'report#export_evaluations_details'
   end
 end

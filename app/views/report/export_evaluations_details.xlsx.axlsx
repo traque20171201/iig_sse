@@ -1,0 +1,76 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "5B9BD5", b: true, border: Axlsx::STYLE_THIN_BORDER)
+  textcenter_cell = style.add_style(alignment: { horizontal: :center }, border: Axlsx::STYLE_THIN_BORDER)
+  border_cell = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
+
+  wb.add_worksheet(name: "Kết quả đánh giá") do |sheet|
+    sheet.add_row ["STT", "Mã nhân viên", "Họ tên", "Phòng ban", "Chức danh", "Trạng thái", "Điểm", "Xếp loại", "Phản hồi", "Quy hoạch cán bộ",
+                    "KHỐI LƯỢNG CÔNG VIỆC", "", "CHẤT LƯỢNG CÔNG VIỆC", "", "TIẾN ĐỘ THỰC HIỆN CÔNG VIỆC", "", "KIẾN THỨC CHUYÊN MÔN VÀ KỸ NĂNG NGHỀ NGHIỆP", "", "MỨC ĐỘ TIN CẬY VÀ TRÁCH NHIỆM", "",
+                    "NHIỆT TÌNH, SÁNG KIẾN, SÁNG TẠO", "", "TINH THẦN, THÁI ĐỘ LÀM VIỆC", "", "KỸ NĂNG GIAO TIẾP - HỖ TRỢ HỢP TÁC", "", "TIẾT KIỆM - GIỮ GÌN TÀI SẢN VÀ VỆ SINH CHUNG", "", "CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY", "",
+                    "KỸ NĂNG LẬP KẾ HOẠCH", "", "KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC", "", "KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH", "", "KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN", "", "KỸ NĂNG KIỂM SOÁT RỦI RO", ""],
+           style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+
+    sheet.add_row ["", "", "", "", "", "", "", "", "", "",
+                    "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2",
+                    "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2",
+                    "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2"],
+           style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+    
+    sheet.merge_cells('A1:A2')
+    sheet.merge_cells('B1:B2')
+    sheet.merge_cells('C1:C2')
+    sheet.merge_cells('D1:D2')
+    sheet.merge_cells('E1:E2')
+    sheet.merge_cells('F1:F2')
+    sheet.merge_cells('G1:G2')
+    sheet.merge_cells('H1:H2')
+    sheet.merge_cells('I1:I2')
+    sheet.merge_cells('J1:J2')
+    sheet.merge_cells('K1:L1')
+    sheet.merge_cells('M1:N1')
+    sheet.merge_cells('O1:P1')
+    sheet.merge_cells('Q1:R1')
+    sheet.merge_cells('S1:T1')
+    sheet.merge_cells('U1:V1')
+    sheet.merge_cells('W1:X1')
+    sheet.merge_cells('Y1:Z1')
+    sheet.merge_cells('AA1:AB1')
+    sheet.merge_cells('AC1:AD1')
+    sheet.merge_cells('AE1:AF1')
+    sheet.merge_cells('AG1:AH1')
+    sheet.merge_cells('AI1:AJ1')
+    sheet.merge_cells('AK1:AL1')
+    sheet.merge_cells('AM1:AN1')
+
+    @evaluations.each.with_index(1) do |evaluation, index|
+        evaluation_details = evaluation.evaluation_details
+      sheet.add_row [index, evaluation.employee.employee_number, evaluation.employee.name, evaluation.employee.department.name, evaluation.employee.position, evaluation.status, evaluation.get_avg, evaluation.get_avg_rank, evaluation.get_feedback, evaluation.get_result,
+                    evaluation_details[0]&.manager_point, evaluation_details[0]&.appraiser_point,
+                    evaluation_details[1]&.manager_point, evaluation_details[1]&.appraiser_point,
+                    evaluation_details[2]&.manager_point, evaluation_details[2]&.appraiser_point,
+                    evaluation_details[3]&.manager_point, evaluation_details[3]&.appraiser_point,
+                    evaluation_details[4]&.manager_point, evaluation_details[4]&.appraiser_point,
+                    evaluation_details[5]&.manager_point, evaluation_details[5]&.appraiser_point,
+                    evaluation_details[6]&.manager_point, evaluation_details[6]&.appraiser_point,
+                    evaluation_details[7]&.manager_point, evaluation_details[7]&.appraiser_point,
+                    evaluation_details[8]&.manager_point, evaluation_details[8]&.appraiser_point,
+                    evaluation_details[9]&.manager_point, evaluation_details[9]&.appraiser_point,
+                    evaluation_details[10]&.manager_point, evaluation_details[10]&.appraiser_point,
+                    evaluation_details[11]&.manager_point, evaluation_details[11]&.appraiser_point,
+                    evaluation_details[12]&.manager_point, evaluation_details[12]&.appraiser_point,
+                    evaluation_details[13]&.manager_point, evaluation_details[13]&.appraiser_point,
+                    evaluation_details[14]&.manager_point, evaluation_details[14]&.appraiser_point],
+             style: [textcenter_cell, textcenter_cell, border_cell, border_cell, border_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, border_cell,
+                    textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell,
+                    textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell,
+                    textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell]
+    end
+  end
+end

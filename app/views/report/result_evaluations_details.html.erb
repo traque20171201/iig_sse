@@ -1,0 +1,151 @@
+<h3>CHI TIẾT KẾT QUẢ ĐÁNH GIÁ NHÂN VIÊN</h3>
+<%= form_with url: "/report/evaluations/result/details", method: :get do |form| %>
+  <div class="row margin-bottom">
+    <div class="col-md-4">
+      <%= form.select :department, @departments.collect { |department| [department.name, department.id] }.unshift(['Phòng ban', '']),
+          { :selected => @department_id }, { class: "form-control" } %>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 text-right">
+      <input type="submit" name="search" value="<%= t('search') %>" class="btn btn-large btn-primary">
+      <%= link_to t('download'), report_evaluations_export_details_path(:format => :xlsx, :department => @department_id), class: 'btn btn-large btn-primary' %>
+    </div>
+  </div>
+<% end %>
+<% if @evaluations.present? %>
+  <div class="row header-background font-weight-bold text-center border" style="margin: 0px;">
+    <div class="col-md-2 border-right">
+      <div class="row" style="height: 100%">
+        <div class="col-md-3 border-right" style="padding: 0px;">STT</div>
+        <div class="col-md-9" style="padding: 0px;">Họ tên</div>
+      </div>
+    </div>
+    <div class="col-md-4 border-right">
+      <div class="row" style="height: 100%">
+        <div class="col-md-2 border-right border-bottom" title="KHỐI LƯỢNG CÔNG VIỆC">B1</div>
+        <div class="col-md-2 border-right border-bottom" title="CHẤT LƯỢNG CÔNG VIỆC">B2</div>
+        <div class="col-md-2 border-right border-bottom" title="TIẾN ĐỘ THỰC HIỆN CÔNG VIỆC">B3</div>
+        <div class="col-md-2 border-right border-bottom" title="KIẾN THỨC CHUYÊN MÔN VÀ KỸ NĂNG NGHỀ NGHIỆP">B4</div>
+        <div class="col-md-2 border-right border-bottom" title="MỨC ĐỘ TIN CẬY VÀ TRÁCH NHIỆM">B5</div>
+        <div class="col-md-2 border-bottom" title="NHIỆT TÌNH, SÁNG KIẾN, SÁNG TẠO">B6</div>
+        <div class="w-100"></div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+      </div>
+    </div>
+    <div class="col-md-4 border-right">
+      <div class="row" style="height: 100%">
+        <div class="col-md-2 border-right border-bottom" title="TINH THẦN, THÁI ĐỘ LÀM VIỆC">B7</div>
+        <div class="col-md-2 border-right border-bottom" title="KỸ NĂNG GIAO TIẾP - HỖ TRỢ HỢP TÁC">B8</div>
+        <div class="col-md-2 border-right border-bottom" title="TIẾT KIỆM - GIỮ GÌN TÀI SẢN VÀ VỆ SINH CHUNG">B9</div>
+        <div class="col-md-2 border-right border-bottom" title="CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY">B10</div>
+        <div class="col-md-2 border-right border-bottom" title="KỸ NĂNG LẬP KẾ HOẠCH">B11</div>
+        <div class="col-md-2 border-bottom" title="KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC">B12</div>
+        <div class="w-100"></div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-1 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-1" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="row" style="height: 100%">
+        <div class="col-md-4 border-right border-bottom" title="KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH">B13</div>
+        <div class="col-md-4 border-right border-bottom" title="KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN">B14</div>
+        <div class="col-md-4 border-bottom" title="KỸ NĂNG KIỂM SOÁT RỦI RO">B15</div>
+        <div class="w-100"></div>
+        <div class="col-md-2 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-2 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-2 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-2 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+        <div class="col-md-2 border-right" style="padding: 0px;" title="Điểm đánh giá của Quản lý 1">QL1</div>
+        <div class="col-md-2" style="padding: 0px;" title="Điểm đánh giá của Quản lý 2">QL2</div>
+      </div>
+    </div>
+  </div>
+  <% @evaluations.each.with_index(1) do |evaluation, index| %>
+    <div class="row border-left border-right border-bottom" style="margin: 0px;">
+      <div class="col-md-2 border-right">
+        <div class="row" style="height: 100%">
+          <div class="col-md-3 border-right text-center"><%= index %></div>
+          <div class="col-md-9" title="Phòng ban: <%= evaluation.employee.department.name %>"><%= evaluation.employee.name %></div>
+        </div>
+      </div>
+      <% evaluation_details = evaluation.evaluation_details %>
+      <div class="col-md-4 border-right">
+        <div class="row" style="height: 100%">
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KHỐI LƯỢNG CÔNG VIỆC - Điểm Quản lý 1"><%= evaluation_details[0]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KHỐI LƯỢNG CÔNG VIỆC - Điểm Quản lý 2"><%= evaluation_details[0]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="CHẤT LƯỢNG CÔNG VIỆC - Điểm Quản lý 1"><%= evaluation_details[1]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="CHẤT LƯỢNG CÔNG VIỆC - Điểm Quản lý 2"><%= evaluation_details[1]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="TIẾN ĐỘ THỰC HIỆN CÔNG VIỆC - Điểm Quản lý 1"><%= evaluation_details[2]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="TIẾN ĐỘ THỰC HIỆN CÔNG VIỆC - Điểm Quản lý 2"><%= evaluation_details[2]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KIẾN THỨC CHUYÊN MÔN VÀ KỸ NĂNG NGHỀ NGHIỆP - Điểm Quản lý 1"><%= evaluation_details[3]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KIẾN THỨC CHUYÊN MÔN VÀ KỸ NĂNG NGHỀ NGHIỆP - Điểm Quản lý 2"><%= evaluation_details[3]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="MỨC ĐỘ TIN CẬY VÀ TRÁCH NHIỆM - Điểm Quản lý 1"><%= evaluation_details[4]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="MỨC ĐỘ TIN CẬY VÀ TRÁCH NHIỆM - Điểm Quản lý 2"><%= evaluation_details[4]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="NHIỆT TÌNH, SÁNG KIẾN, SÁNG TẠO - Điểm Quản lý 1"><%= evaluation_details[5]&.manager_point %></div>
+          <div class="col-md-1 text-center" style="padding: 0px;" title="NHIỆT TÌNH, SÁNG KIẾN, SÁNG TẠO - Điểm Quản lý 2"><%= evaluation_details[5]&.appraiser_point %></div>
+        </div>
+      </div>
+      <div class="col-md-4 border-right">
+        <div class="row" style="height: 100%">
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="TINH THẦN, THÁI ĐỘ LÀM VIỆC - Điểm Quản lý 1"><%= evaluation_details[6]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="TINH THẦN, THÁI ĐỘ LÀM VIỆC - Điểm Quản lý 2"><%= evaluation_details[6]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KỸ NĂNG GIAO TIẾP - HỖ TRỢ HỢP TÁC - Điểm Quản lý 1"><%= evaluation_details[7]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KỸ NĂNG GIAO TIẾP - HỖ TRỢ HỢP TÁC - Điểm Quản lý 2"><%= evaluation_details[7]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="TIẾT KIỆM - GIỮ GÌN TÀI SẢN VÀ VỆ SINH CHUNG - Điểm Quản lý 1"><%= evaluation_details[8]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="TIẾT KIỆM - GIỮ GÌN TÀI SẢN VÀ VỆ SINH CHUNG - Điểm Quản lý 2"><%= evaluation_details[8]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY - Điểm Quản lý 1"><%= evaluation_details[9]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY - Điểm Quản lý 2"><%= evaluation_details[9]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KỸ NĂNG LẬP KẾ HOẠCH - Điểm Quản lý 1"><%= evaluation_details[10]&.manager_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KỸ NĂNG LẬP KẾ HOẠCH - Điểm Quản lý 2"><%= evaluation_details[10]&.appraiser_point %></div>
+          <div class="col-md-1 border-right text-center" style="padding: 0px;" title="KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC - Điểm Quản lý 1"><%= evaluation_details[11]&.manager_point %></div>
+          <div class="col-md-1 text-center" style="padding: 0px;" title="KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC - Điểm Quản lý 2"><%= evaluation_details[11]&.appraiser_point %></div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="row" style="height: 100%">
+          <div class="col-md-2 border-right text-center" style="padding: 0px;" title="KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH - Điểm Quản lý 1"><%= evaluation_details[12]&.manager_point %></div>
+          <div class="col-md-2 border-right text-center" style="padding: 0px;" title="KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH - Điểm Quản lý 2"><%= evaluation_details[12]&.appraiser_point %></div>
+          <div class="col-md-2 border-right text-center" style="padding: 0px;" title="KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN - Điểm Quản lý 1"><%= evaluation_details[13]&.manager_point %></div>
+          <div class="col-md-2 border-right text-center" style="padding: 0px;" title="KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN - Điểm Quản lý 2"><%= evaluation_details[13]&.appraiser_point %></div>
+          <div class="col-md-2 border-right text-center" style="padding: 0px;" title="KỸ NĂNG KIỂM SOÁT RỦI RO - Điểm Quản lý 1"><%= evaluation_details[14]&.manager_point %></div>
+          <div class="col-md-2 text-center" style="padding: 0px;" title="KỸ NĂNG KIỂM SOÁT RỦI RO - Điểm Quản lý 2"><%= evaluation_details[14]&.appraiser_point %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= paginate @evaluations %>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+<% else %>
+<div class ="row text-center">
+  <div class="col-md-12">
+    <span class="highlight">Không tìm thấy chi tiết kết quả đánh giá nhân viên.</span>
+  </div>
+</div>
+<% end %>

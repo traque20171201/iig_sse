@@ -52,6 +52,47 @@ class ReportController < ApplicationController
     end
   end
 
+  def result_evaluations_details
+    @department_id = params[:department]
+    @departments = Department.all
+
+    @evaluations = Evaluation.includes(
+                              employee: [
+                                :department
+                              ],
+                              evaluation_details: [
+                                :master_evaluation_point
+                              ]
+                            )
+                            .where_by_department_id(params[:department])
+                            .order("evaluation_details.evaluation_point_id ASC").page params[:page]
+  end
+
+  def export_evaluations_details
+    @department_id = params[:department]
+
+    @evaluations = Evaluation.includes(
+                              employee: [
+                                :department
+                              ],
+                              evaluation_details: [
+                                :master_evaluation_point
+                              ]
+                            )
+                            .where_by_department_id(params[:department])
+                            .order("evaluation_details.evaluation_point_id ASC")
+
+    filename = "Danh sách chi tiết kết quả đánh giá toàn bộ công ty năm 2020.xlsx"
+    filename = "Danh sách chi tiết kết quả đánh giá phòng #{Department.find(params[:department]).name} năm 2020.xlsx" if params[:department].present?
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = "attachment; filename=#{filename}"
+      }
+    end
+  end
+
   private
 
   def check_permission_before
