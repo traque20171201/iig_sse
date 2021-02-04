@@ -71,7 +71,7 @@ class EmployeeEvaluationsController < ApplicationController
   end
 
   def check_over_date_evaluation
-    ignore_employees = [193]
+    ignore_employees = [193, 100]
     return if ignore_employees.include?(current_employee.id)
 
     flash[:alert] = 'Đã hết thời hạn đánh giá. Bạn không thể đánh giá hoặc chỉnh sửa.'
