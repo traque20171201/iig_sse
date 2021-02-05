@@ -19,6 +19,11 @@ class AppraiserEvaluationsController < ApplicationController
       flash[:alert] = 'Không có quyền truy cập.'
       redirect_to root_path
     end
+    ignore_employees = [193, 100]
+    if ignore_employees.exclude?(request_params.employee_id)
+      flash[:alert] = 'Đã hết thời hạn đánh giá. Bạn không thể đánh giá hoặc chỉnh sửa.'
+      redirect_to manager_evaluations_list_path
+    end
     service = GetEvaluationByEmployeeIdService.new(request_params)
     service.run!
     # if service.result[:evaluation].status_before_type_cast >= 7
@@ -36,6 +41,11 @@ class AppraiserEvaluationsController < ApplicationController
     if !check_permission(current_employee.id, request_params.employee_id)
       flash[:alert] = 'Không có quyền truy cập.'
       redirect_to root_path
+    end
+    ignore_employees = [193, 100]
+    if ignore_employees.exclude?(request_params.employee_id)
+      flash[:alert] = 'Đã hết thời hạn đánh giá. Bạn không thể đánh giá hoặc chỉnh sửa.'
+      redirect_to manager_evaluations_list_path
     end
     service = AppraiserEvaluationService.new(request_params)
     service.run!
@@ -74,6 +84,9 @@ class AppraiserEvaluationsController < ApplicationController
   end
 
   def check_over_date_evaluation
+    ignore_employees = [191, 86, 87]
+    return if ignore_employees.include?(current_employee.id)
+
     flash[:alert] = 'Đã hết thời hạn đánh giá. Bạn không thể đánh giá hoặc chỉnh sửa.'
     redirect_to appraiser_evaluations_list_path
   end
