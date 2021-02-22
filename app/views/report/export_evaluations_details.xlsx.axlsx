@@ -8,20 +8,25 @@ wb.styles do |style|
     sheet.add_row ["STT", "Mã nhân viên", "Họ tên", "Phòng ban", "Chức danh", "Trạng thái", "Điểm", "Xếp loại", "Phản hồi", "Quy hoạch cán bộ",
                     "KHỐI LƯỢNG CÔNG VIỆC", "", "CHẤT LƯỢNG CÔNG VIỆC", "", "TIẾN ĐỘ THỰC HIỆN CÔNG VIỆC", "", "KIẾN THỨC CHUYÊN MÔN VÀ KỸ NĂNG NGHỀ NGHIỆP", "", "MỨC ĐỘ TIN CẬY VÀ TRÁCH NHIỆM", "",
                     "NHIỆT TÌNH, SÁNG KIẾN, SÁNG TẠO", "", "TINH THẦN, THÁI ĐỘ LÀM VIỆC", "", "KỸ NĂNG GIAO TIẾP - HỖ TRỢ HỢP TÁC", "", "TIẾT KIỆM - GIỮ GÌN TÀI SẢN VÀ VỆ SINH CHUNG", "", "CHẤP HÀNH NỘI QUY-QUY ĐỊNH CÔNG TY", "",
-                    "KỸ NĂNG LẬP KẾ HOẠCH", "", "KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC", "", "KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH", "", "KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN", "", "KỸ NĂNG KIỂM SOÁT RỦI RO", ""],
+                    "KỸ NĂNG LẬP KẾ HOẠCH", "", "KỸ NĂNG QUẢN LÝ, PHÂN CÔNG VÀ KIỂM SOÁT CÔNG VIỆC", "", "KỸ NĂNG XỬ LÝ VẤN ĐỀ PHÁT SINH VÀ RA QUYẾT ĐỊNH", "", "KỸ NĂNG XÂY DỰNG ĐỘI NHOM - THÚC ĐẨY, ĐỊNH HƯỚNG VÀ ĐÀO TẠO CHO NHÂN VIÊN", "", "KỸ NĂNG KIỂM SOÁT RỦI RO", "",
+                    "C1. Định hướng phát triển trong thời gian tới (Là mục tiêu phát triển cần hoàn thành hay phấn đấu trong thời gian tới )", "",
+                    "C2. Điểm tích cực cần phát huy", "", "C3. Điểm hạn chế cần sửa đổi", "", "C4. Sáng kiến/ Đề xuất / Kiến nghị / Đóng góp ý kiến", ""],
            style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
                     highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
                     highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
-                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
 
     sheet.add_row ["", "", "", "", "", "", "", "", "", "",
                     "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2",
                     "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2",
-                    "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2"],
+                    "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2", "Điểm Quản lý 1", "Điểm Quản lý 2",
+                    "Ý kiến của nhân viên", "Ý kiến của CBQL 1", "Ý kiến của nhân viên", "Ý kiến của CBQL 1", "Ý kiến của nhân viên", "Ý kiến của CBQL 1", "Ý kiến của nhân viên", "Ý kiến của CBQL 1"],
            style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
                     highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
                     highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
-                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell,
+                    highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
     
     sheet.merge_cells('A1:A2')
     sheet.merge_cells('B1:B2')
@@ -48,6 +53,10 @@ wb.styles do |style|
     sheet.merge_cells('AI1:AJ1')
     sheet.merge_cells('AK1:AL1')
     sheet.merge_cells('AM1:AN1')
+    sheet.merge_cells('AO1:AP1')
+    sheet.merge_cells('AQ1:AR1')
+    sheet.merge_cells('AS1:AT1')
+    sheet.merge_cells('AU1:AV1')
 
     @evaluations.each.with_index(1) do |evaluation, index|
         evaluation_details = evaluation.evaluation_details
@@ -66,11 +75,16 @@ wb.styles do |style|
                     evaluation_details[11]&.manager_point, evaluation_details[11]&.appraiser_point,
                     evaluation_details[12]&.manager_point, evaluation_details[12]&.appraiser_point,
                     evaluation_details[13]&.manager_point, evaluation_details[13]&.appraiser_point,
-                    evaluation_details[14]&.manager_point, evaluation_details[14]&.appraiser_point],
+                    evaluation_details[14]&.manager_point, evaluation_details[14]&.appraiser_point,
+                    evaluation&.achievements, evaluation&.achievements_manager,
+                    evaluation&.positive_goals, evaluation&.positive_goals_manager,
+                    evaluation&.negative_goals, evaluation&.negative_goals_manager,
+                    evaluation&.overall_comments, evaluation&.overall_comments_manager],
              style: [textcenter_cell, textcenter_cell, border_cell, border_cell, border_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, border_cell,
                     textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell,
                     textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell,
-                    textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell]
+                    textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell, textcenter_cell,
+                    border_cell, border_cell, border_cell, border_cell, border_cell, border_cell, border_cell, border_cell]
     end
   end
 end
